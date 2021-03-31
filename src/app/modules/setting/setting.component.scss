@@ -1,0 +1,175 @@
+@import '../../../assets/scss/control-panel';
+
+/*/---- Mixin starts ----/*/
+@mixin grid {
+  display: grid;
+  grid-gap: 2rem;
+}
+/*/---- Mixin ends ----/*/
+
+/*/---- Sidenav starts ----/*/
+// Style is in _control-panel.scss
+/*/---- Sidenav ends ----/*/
+
+/*/---- Main start ----/*/
+.settings-container {
+  color: $dark-color2;
+  @media only screen and (min-width: 885px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  h5 {
+    color: $dark-color1;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .col-1 {
+    @include grid;
+    @include white-background;
+    flex-basis: 63%;
+    .settings-checker {
+      display: grid;
+      grid-gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid $light-color;
+      .row {
+        display: grid;
+        grid-gap: 1rem;
+        .input-item {
+          display: flex;
+          align-items: center;
+          .switch {
+            position: relative;
+            display: inline-block;
+            &-input {
+              display: none;
+              &:checked + .switch-label::before {
+                background-color: $warning-color;
+              }
+              &:checked + .switch-label::after {
+                left: 20px;
+              }
+            }
+            &-label {
+              display: block;
+              width: 40px;
+              height: 20px;
+              text-indent: -150%;
+              clip: rect(0 0 0 0);
+              color: transparent;
+              user-select: none;
+              &::before,
+              &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                cursor: pointer;
+              }
+              &::before {
+                width: 100%;
+                height: 100%;
+                background-color: $grey-color1;
+                border-radius: 9999em;
+                -webkit-transition: background-color 0.25s ease;
+                transition: background-color 0.25s ease;
+              }
+              &::after {
+                top: 2px;
+                left: 0;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background-color: #fff;
+                box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+                -webkit-transition: left 0.25s ease;
+                transition: left 0.25s ease;
+              }
+            }
+          }
+          p {
+            margin-left: 1rem;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .pass-update {
+      h5 {
+        margin-bottom: 1rem;
+      }
+      .form {
+        &-change-password {
+          @include grid;
+          #empty-div {
+            display: none;
+          }
+          @media only screen and (min-width: 585px) {
+            grid-template-columns: repeat(2, 1fr);
+            #empty-div {
+              display: block;
+            }
+          }
+          input {
+            width: 100%;
+            color: $dark-color2;
+            font-size: $button-lg-font;
+            border: 1px solid $grey-color2;
+            border-radius: $border-radius;
+            padding: 0.8rem;
+            transition: all 0.2s;
+            outline: none;
+            margin-top: 1rem;
+            @include border-hover;
+            @include transition(0.2s);
+            &::placeholder {
+              color: $grey-color2;
+            }
+          }
+        }
+        .warning-msg {
+          margin-top: 1rem;
+        }
+        &-submit-btn {
+          margin-top: 2rem;
+          @include update-changes;
+        }
+      }
+    }
+  }
+  .col-2 {
+    @include white-background;
+    flex-basis: 35%;
+    @media only screen and (max-width: 885px) {
+      margin-top: 2rem;
+    }
+    p {
+      margin: 1rem 0;
+    }
+    .fact-veri-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .btn {
+        font-size: 14px;
+        padding: 0.5rem;
+      }
+      &-status {
+        p {
+          color: $dark-color3;
+          font-size: $button-md-font - 2;
+          strong {
+              color: $dark-color2;
+              background: $light-color;
+              padding: 4px 10px;
+              margin-left: 0.3rem;
+              text-align: center;
+              border-radius: 3px;
+              border: 1px solid $light-color;
+          }
+        }
+      }
+    }
+  }
+}
+/*/---- Main ends ----/*/

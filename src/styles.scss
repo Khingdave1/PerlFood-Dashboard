@@ -1,0 +1,46 @@
+/*/---- Import ----/*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import "assets/scss/utilities";
+@import "assets/scss/variables";
+@import "assets/scss/control-panel";
+
+/*/---- General begins ----/*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+// Material
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  display: none !important;
+}
+.mat-form-field-infix {
+  border-top: 0;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+.mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.2375em 0;
+}

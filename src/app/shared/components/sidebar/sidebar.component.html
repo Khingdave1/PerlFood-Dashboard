@@ -1,0 +1,78 @@
+<!-- Side Nav -->
+<div class="sidenav">
+  <!-- Logo -->
+  <a href="../index.html" class="sidenav-logo">
+    <img src="../../assets/img/logo.png" alt="" class="sidenav-logo-large" />
+  </a>
+
+  <!-- Close Icon -->
+  <div class="close-menu">
+    <img src="../../assets/img/svg/close.svg" alt="" class="close-icon" />
+  </div>
+
+  <!-- Sidenav List -->
+  <div class="sidenav-list">
+    <ul>
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <img src="../../assets/img/svg/dashboard.svg" alt="" />
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/merchant" routerLinkActive="active">
+          <img src="../../assets/img/svg/merchant.svg" alt="" />
+          <p>Merchants</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/customer" routerLinkActive="active">
+          <img src="../../assets/img/svg/customer.svg" alt="" />
+          <p>Customers</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/vehicle" routerLinkActive="active">
+          <img src="../../assets/img/svg/vehicle.svg" alt="" />
+          <p>Vehicles</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/rider" routerLinkActive="active">
+          <img src="../../assets/img/svg/rider.svg" alt="" />
+          <p>Riders</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/order" routerLinkActive="active">
+          <img src="../../assets/img/svg/order.svg" alt="" />
+          <p>Orders</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/payment" routerLinkActive="active">
+          <img src="../../assets/img/svg/payment.svg" alt="" />
+          <p>Payments</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/product" routerLinkActive="active">
+          <img src="../../assets/img/svg/box.svg" alt="" />
+          <p>Products</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Sidenav Settings -->
+  <div class="sidenav-settings">
+    <a routerLink="/setting" routerLinkActive="active">
+      <img src="../../assets/img/svg/settings.svg" alt="" />
+      <p>Settings</p>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+<!-- Header Container -->
+<div class="header-container">
+  <!-- Mobile view top -->
+  <div class="mobile-view-top">
+    <!-- Menu icon -->
+    <img
+      src="../../assets/img/svg/bx-menu-alt-left.svg"
+      alt=""
+      class="menu-icon clickable"
+    />
+    <!-- Logo -->
+    <a href="../index.html" class="logo"
+      ><img src="../../assets/img/logo.png" alt=""
+    /></a>
+  </div>
+
+  <!-- Top Nav -->
+  <div class="top-nav">
+    <!-- Top NAv Left -->
+    <span class="top-nav-left">
+      <img src="../../assets/img/svg/search.svg" alt="search" />
+      <input
+        type="text"
+        class="top-search"
+        placeholder="You can search here..."
+      />
+    </span>
+
+    <!-- TOp Nav Right -->
+    <span class="top-nav-right">
+      <!-- Notification -->
+      <span class="notifi-dropdown">
+        <img
+          src="../../assets/img/svg/notification.svg"
+          alt="notifi"
+          class="notifi-dropbtn clickable"
+          (click)="toggleNotifi()"
+        />
+
+        <div class="notifi-dropdown-content" [class.show-content]="showNotifi">
+          <h6 class="notifi-dropdown-content-heading">
+            You have <strong>13</strong> notifications
+          </h6>
+          <div class="notifi-dropdown-content-list">
+            <a href="#!" class="notifi-dropdown-content-item">
+              <div>
+                <div class="notifi-dropdown-content-img">
+                  <img
+                    src="../../assets/img/notifi/team-1.jpg"
+                    class="avatar"
+                  />
+                </div>
+                <div class="notifi-dropdown-content-text">
+                  <div class="notifi-dropdown-content-text-top">
+                    <h4 class="notifi-dropdown-content-name">John Snow</h4>
+                    <small class="notifi-dropdown-content-time"
+                      >2 hrs ago</small
+                    >
+                  </div>
+                  <p class="notifi-dropdown-content-message">
+                    Let's meet at Starbucks at 11:30. Wdyt?
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            <a href="#!" class="notifi-dropdown-content-item">
+              <div>
+                <div class="notifi-dropdown-content-img">
+                  <img
+                    src="../../assets/img/notifi/team-2.jpg"
+                    class="avatar"
+                  />
+                </div>
+                <div class="notifi-dropdown-content-text">
+                  <div class="notifi-dropdown-content-text-top">
+                    <h4 class="notifi-dropdown-content-name">John Snow</h4>
+                    <small class="notifi-dropdown-content-time"
+                      >2 hrs ago</small
+                    >
+                  </div>
+                  <p class="notifi-dropdown-content-message">
+                    Let's meet at Starbucks at 11:30. Wdyt?
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            <a href="#!" class="notifi-dropdown-content-item">
+              <div>
+                <div class="notifi-dropdown-content-img">
+                  <img
+                    src="../../assets/img/notifi/team-3.jpg"
+                    class="avatar"
+                  />
+                </div>
+                <div class="notifi-dropdown-content-text">
+                  <div class="notifi-dropdown-content-text-top">
+                    <h4 class="notifi-dropdown-content-name">John Snow</h4>
+                    <small class="notifi-dropdown-content-time"
+                      >2 hrs ago</small
+                    >
+                  </div>
+                  <p class="notifi-dropdown-content-message">
+                    Let's meet at Starbucks at 11:30. Wdyt?
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <a href="#" class="notifi-dropdown-content-all">View all</a>
+        </div>
+      </span>
+
+      <!-- Profile -->
+      <span class="profile-dropdown">
+        <span class="profile-dropbtn clickable" (click)="toggleProfile()">
+          <span class="profile-name">
+            <p>
+              Hello, <strong id="admin-name">{{ user.name }}</strong>
+            </p>
+            <p class="admin-title">Admin</p>
+          </span>
+          <img [src]="user.imageUrl" alt="picture" class="profile-picture" />
+        </span>
+        <ul
+          class="profile-dropdown-content"
+          [class.show-content]="showProfile"
+          #pop
+        >
+          <li><img src="../../assets/img/svg/bx-envelope.svg" /> Inbox</li>
+          <li routerLink="/account">
+            <img src="../../assets/img/svg/bx-user.svg" /> Account
+          </li>
+          <li routerLink="/setting">
+            <img src="../../assets/img/svg/settings.svg" /> Settings
+          </li>
+          <li (click)="logOut()">
+            <img src="../../assets/img/svg/bx-power-off.svg" /> Log out
+          </li>
+        </ul>
+      </span>
+    </span>
+  </div>
+</div>

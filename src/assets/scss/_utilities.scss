@@ -1,0 +1,186 @@
+/*/---- Font ----/*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import "variables";
+
+/*/ ---- Mixins starts ----/*/
+@mixin transition {
+  transition: all 0.3s ease-in;
+}
+/*/ ---- Mixins ends ----/*/
+
+/*/---- General begins ----/*/
+body {
+  background-color: $light-color;
+}
+.container {
+  width: 100%;
+  position: relative;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.sect {
+  width: 85%;
+  margin: 5rem auto;
+  &-heading {
+    text-align: center;
+    margin-bottom: 5rem;
+    h2 {
+      &::after {
+        content: "";
+        display: block;
+        height: 15px;
+        width: 15px;
+        margin: 10px auto 0 auto;
+        background-color: $accent-color;
+        border-radius: 50%;
+      }
+    }
+    p {
+      margin-top: 30px;
+      line-height: 22px;
+    }
+  }
+}
+a {
+  cursor: pointer;
+}
+/*/---- General ends ----/*/
+
+/*/---- Heading begins ----/*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $dark-color1;
+}
+h1 {
+  font-size: $h1-font;
+  @media only screen and (max-width: 745px) {
+    font-size: $h1-font - 15;
+  }
+}
+h2 {
+  font-size: $h2-font;
+  font-weight: 400;
+  @media only screen and (max-width: 450px) {
+    font-size: $h2-font - 5;
+  }
+}
+h3 {
+  font-size: $h3-font;
+  font-weight: 400;
+  @media only screen and (max-width: 450px) {
+    font-size: $h3-font - 5;
+  }
+}
+h4 {
+  font-size: $h4-font;
+  font-weight: normal;
+}
+h5 {
+  font-size: $h5-font;
+  font-weight: 400;
+}
+h6 {
+  font-size: $h6-font;
+  font-weight: 500;
+}
+/*/---- Heading ends ----/*/
+
+/*/---- Buttons begins ----/*/
+.btn {
+  display: inline-block;
+  border-radius: ($border-radius - 4);
+  padding: 0.625rem 1.25rem;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  @include transition;
+  &.prim-btn {
+    background-color: $primary-color;
+    color: $white-color;
+    &:hover {
+      background-color: #ffd113;
+    }
+  }
+  &.sec1-btn {
+    border: 1px solid $dark-color1;
+    color: $dark-color1;
+    &:hover {
+      background-color: rgba(23, 15, 70, 0.075);
+    }
+  }
+  &.sec2-btn {
+    background-color: $dark-color1;
+    color: $white-color;
+    &:hover {
+      background-color: $dark-color2;
+    }
+  }
+  &.light-btn {
+    background-color: $light-color;
+    color: $dark-color1;
+    &:hover {
+      background-color: calc($light-color + 8.5%);
+      box-shadow: $box-shadow;
+    }
+  }
+  &.dark-btn {
+    background-color: $dark-color1;
+    color: $white-color;
+    font-size: $button-md-font;
+    &:hover {
+      background-color: $dark-color2;
+    }
+  }
+  &.trans-btn {
+    font-size: $button-md-font;
+    background-color: transparent;
+    color: $dark-color1;
+    border: 1px solid transparent;
+    &:hover {
+      border: 1px solid $dark-color1;
+    }
+  }
+  &.danger-btn {
+    background-color: $danger-color;
+    color: $white-color;
+    &:hover {
+      background-color: #ff7474;
+    }
+  }
+}
+/*/---- Buttons ends ----/*/
+
+/*/---- Messages starts ----/*/
+.success-msg {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: $success-color;
+  img {
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+  }
+}
+
+.warning-msg {
+  display: flex;
+  align-items: center;
+  // warning icon
+  img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  p {
+    color: $warning-color;
+    font-size: $button-md-font - 2;
+  }
+}
+/*/---- Messages ends ----/*/

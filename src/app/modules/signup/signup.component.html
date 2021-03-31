@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="login-content">
+    <div class="login-content-heading">
+      <h2>Create Account</h2>
+    </div>
+    <form
+      class="login-content-form"
+      (ngSubmit)="signup()"
+      name="signupForm"
+      [formGroup]="signupForm"
+    >
+      <div class="login-content-username login-fields">
+        <input
+          type="text"
+          #name
+          placeholder="Username"
+          required
+          formControlName="name"
+        />
+        <img src="../../../assets/img/svg/bx-user.svg" />
+      </div>
+      <!-- <span *ngIf="!signupForm.controls['name']">Error</span> -->
+      <div class="login-content-email login-fields">
+        <input
+          type="email"
+          #email
+          placeholder="Email"
+          required
+          formControlName="email"
+        />
+        <img src="../../../assets/img/svg/bxs-envelope.svg" />
+      </div>
+      <!-- <span *ngIf="!signupForm.controls['name']">Error</span> -->
+      <div class="login-content-gender login-fields">
+        <select #gender formControlName="gender">
+          <option *ngFor="let item of genders" [value]="item.value">
+            {{ item.viewValue }}
+          </option>
+        </select>
+      </div>
+      <div class="login-content-password">
+        <span class="login-fields">
+          <input
+            placeholder="Password"
+            required
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <img
+            src="../../../assets/img/svg/bx-lock.svg"
+            class="clickable"
+            (click)="hide = !hide"
+          />
+        </span>
+        <!-- Password Warning!!! -->
+        <span class="warning-msg">
+          <img src="../../assets/img/svg/bxs-info-circle.svg" alt="" />
+          <p>Password should be minmum 8 letter.</p>
+        </span>
+      </div>
+      <div class="login-content-confirm-password login-fields">
+        <input
+          placeholder="Confirm Password"
+          required
+          formControlName="confirmPassword"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <img
+          src="../../../assets/img/svg/bx-lock.svg"
+          class="clickable"
+          (click)="hide = !hide"
+        />
+      </div>
+      <div class="login-content-btn">
+        <button class="btn prim-btn" (click)="signup()">Submit</button>
+        <!-- <p class="login-content-extra"><a href="#">Forgot your password?</a></p> -->
+      </div>
+    </form>
+  </div>
+</div>

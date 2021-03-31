@@ -1,0 +1,38 @@
+@import "../../../assets/scss/control-panel";
+
+/*/---- Sidenav starts ----/*/
+// Style is in _control-panel.scss
+/*/---- Sidenav ends ----/*/
+
+/*/---- Main start ----/*/
+.table-area {
+  &-body {
+    .table-list {
+      li {
+        p {
+          &.name {
+            flex-basis: 15%;
+          }
+          &.email {
+            flex-basis: 25%;
+          }
+          &.address {
+            flex-basis: 24%;
+          }
+          &.number {
+            flex-basis: 10%;
+          }
+
+          &.status {
+            flex-basis: 8%;
+          }
+          &.action {
+            flex-basis: 18%;
+          }
+          //.action is in _control-panel.scss
+        }
+      }
+    }
+  }
+}
+/*/---- Main ends ----/*/

@@ -1,0 +1,123 @@
+<<<<<<< HEAD
+<!-- EDIT PRODUCT -->
+<section class="main-sect">
+  <div class="main-sect-heading">
+    <div class="main-sect-heading-left">
+      <h5 class="clickable" (click)="showProductSect()">
+        <img src="../../../../assets/img/svg/arrow-left.svg" alt="" />
+        Products
+      </h5>
+      <img src="../../../assets/img/svg/line.svg" alt="" />
+      <p>Edit Product</p>
+    </div>
+  </div>
+  <div class="form-area-container">
+    <div class="form-area">
+      <form
+        (ngSubmit)="onEdit($event)"
+        name="productForm"
+        [formGroup]="productForm"
+      >
+        <div class="form-area-field image">
+          <label for="product-image">Image</label>
+          <input
+            type="file"
+            name="products"
+            placeholder="Upload"
+            (change)="onFileSelected($event)"
+            style="display: none"
+            #productImage
+            required
+          />
+          <!-- The input is set to display none. so this will show instead -->
+          <span (click)="productImage.click()" class="col-2 select-field">
+            Upload
+            <img src="../../../assets/img/svg/upload.svg" alt="" />
+          </span>
+        </div>
+        <div class="form-area-field name">
+          <label for="product-name">Name</label>
+          <input
+            type="text"
+            placeholder="Product name"
+            class="col-2"
+            #name
+            formControlName="name"
+            [(ngModel)]="currentProduct.name"
+          />
+        </div>
+        <div class="form-area-field category">
+          <label for="category">Category</label>
+          <mat-form-field class="select-field col-2">
+            <mat-select #categoryId formControlName="categoryId">
+              <mat-option *ngFor="let item of categories" [value]="item">{{
+                item.title
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-area-field vendor">
+          <label for="vendor">Vendor</label>
+          <mat-form-field class="select-field col-2">
+            <mat-select #vendorId formControlName="vendorId">
+              <mat-option *ngFor="let item of vendors" [value]="item">{{
+                item.title
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-area-field amount">
+          <label for="amount">Price</label>
+          <input
+            type="number"
+            placeholder="E.g 5,000"
+            class="col-2"
+            #amount
+            formControlName="amount"
+            [(ngModel)]="currentProduct.amount"
+          />
+        </div>
+        <div class="form-area-field discounted-amount">
+          <label for="discounted-amount">Discounted Price</label>
+          <input
+            type="number"
+            placeholder="E.g 1,000"
+            class="col-2"
+            #discountedAmount
+            formControlName="discountedAmount"
+            [(ngModel)]="currentProduct.discountedAmount"
+          />
+        </div>
+        <div class="form-area-field description">
+          <label for="description">Description</label>
+          <textarea
+            cols="30"
+            rows="6"
+            class="select-field col-2"
+            #description
+            formControlName="description"
+            [(ngModel)]="currentProduct.description"
+          ></textarea>
+        </div>
+        <div class="form-area-field form-btn">
+          <button
+            [disabled]="loading"
+            class="btn prim-btn"
+            (click)="onEdit(currentProduct)"
+          >
+            <span *ngIf="loading">Editing!</span>
+            <span *ngIf="!loading">Edit</span>
+          </button>
+          <span class="success-msg col-2" *ngIf="successMessage">
+            <img src="../../assets/img/svg/checked.svg" alt="" />
+            <p>All Changes are saved</p>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="preview-area">
+      <p *ngIf="showPreviewText">Image Preview</p>
+      <img [src]="previewImage" alt="Preview image" *ngIf="showPreviewImage" />
+    </div>
+  </div>
+</section>

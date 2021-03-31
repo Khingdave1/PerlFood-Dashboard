@@ -1,0 +1,161 @@
+@import '../../../../assets/scss/control-panel';
+
+/*/---- Sidenav starts ----/*/
+.sidenav {
+    background: $gradient-color;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    padding: 1.5rem;
+    @media only screen and (max-width: 885px) {
+        width: 10%;
+        padding: 1rem;
+        overflow-y: scroll;
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .sidenav-list,
+        .sidenav-settings {
+            text-align: center;
+            p {
+                display: none;
+            }
+        }
+    }
+    @media only screen and (max-width: 745px) {
+        width: 60%;
+        top: 0;
+        left: -1000%;
+        transition: all 0.5s ease-in-out;
+        z-index: 999999;
+        .sidenav-list,
+        .sidenav-settings {
+            text-align: center;
+            p {
+                display: block;
+            }
+        }
+        // Show side nav
+        &.show-sidenav {
+            left: 0;
+        }
+    }
+    // Logo
+    &-logo {
+        display: inline-block;
+        margin-bottom: 20%;
+        @media only screen and (max-width: 885px) {
+            margin-bottom: 3rem;
+        }
+        @media only screen and (max-width: 885px) {
+            width: 150px;
+        }
+        &-large {
+            @media only screen and (max-width: 745px) {
+                // display: none;
+            }
+            
+        }
+        // &-small {
+        //     display: none;
+        //     @media only screen and (max-width: 885px) {
+        //         display: block;
+        //     }
+        // }
+        img {
+            width: 100%;
+        }
+    }
+    // List and Settings
+    &-list,
+    &-settings {
+        a {
+            display: flex;
+            align-items: center;
+            color: $dark-color2;
+            padding: 10px;
+            font-size: $button-md-font;
+            p {
+                margin-left: 1rem;
+            }
+            img {
+                filter: brightness(0.20);
+            }
+        }
+    }
+    // List
+    &-list {
+        // margin-top: 5rem;
+        li {
+            margin-bottom: 0.5rem;
+            a,
+            img {
+                @include transition(0.4s);
+            }
+            img {
+                width: 24px;
+                height: 24px;
+            }
+            a {
+                border-radius: $border-radius;
+                position: relative;
+                &:hover,
+                &.active {
+                    background-color: $primary-color;
+                    color: $white-color;
+                    img {
+                        filter: brightness(1); 
+                    }
+                }
+                .notifi-dot {
+                    @include notification-dot;
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                }
+                
+            }
+        }
+    }
+    // Settings
+    &-settings {
+        position: absolute;
+        bottom: 2rem;
+        left: 1.5rem;
+        img {
+            transform: rotate(0deg);
+            @include transition(0.2s);
+        }
+        :hover img {
+            transform: rotate(360deg);
+        }
+        @media only screen and (max-width: 885px) {
+            left: 1rem;
+        }
+        @media only screen and (max-width: 745px) {
+            display: none;
+        }
+    }
+    // CLOSE MENU
+    .close-menu {
+        display: none;
+        img {
+            width: 40px;
+            height: 40px;
+        }
+        @media only screen and (max-width: 745px) {
+            display: block;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+        }
+    }
+}
+/*/---- Sidenav ends ----/*/

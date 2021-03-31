@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "perlfood": {
+      "hosting": {
+        "perl-dashboard": [
+          "perlfood"
+        ]
+      }
+    }
+  }
+}

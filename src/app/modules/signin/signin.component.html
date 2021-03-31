@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="login-content">
+    <div class="login-content-heading">
+      <h2 routerLink="/">Login</h2>
+    </div>
+    <form
+      class="login-content-form"
+      (ngSubmit)="signin()"
+      name="signinForm"
+      [formGroup]="signinForm"
+    >
+      <div class="login-content-email login-fields">
+        <input
+          type="email"
+          #email
+          placeholder="Email"
+          required
+          formControlName="email"
+        />
+        <img src="../../../assets/img/svg/bx-user.svg" />
+      </div>
+      <div class="login-content-password login-fields">
+        <input
+          #password
+          placeholder="Password"
+          formControlName="password"
+          required
+          [type]="hide ? 'password' : 'text'"
+        />
+        <img
+          src="../../../assets/img/svg/bx-lock.svg"
+          class="clickable"
+          (click)="hide = !hide"
+        />
+      </div>
+      <div class="login-content-btn">
+        <button [disabled]="loading" class="btn clickable" (click)="signin()">
+          <span *ngIf="loading">Loading...</span>
+          <span *ngIf="!loading">Login</span>
+        </button>
+        <p class="login-content-extra">
+          <a routerLink="/signup">Create an account</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

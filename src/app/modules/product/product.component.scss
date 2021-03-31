@@ -1,0 +1,64 @@
+@import "../../../assets/scss/control-panel";
+
+/*/---- Sidenav starts ----/*/
+// Style is in _control-panel.scss
+/*/---- Sidenav ends ----/*/
+
+/*/---- products starts ----/*/
+.table-area {
+  &-body {
+    .table-list {
+      li {
+        p {
+          &.image {
+            flex-basis: 10%;
+            img {
+              width: 60px;
+              height: 60px;
+            }
+          }
+          &.name {
+            flex-basis: 40%;
+          }
+          &.category {
+            flex-basis: 20%;
+          }
+          &.price {
+            flex-basis: 15%;
+          }
+          &.action {
+            flex-basis: 15% !important;
+            .btn {
+              &.dark-btn {
+                width: 50%;
+                border-radius: 4px 0px 0px 4px;
+                margin-left: 0;
+              }
+              &.danger-btn {
+                width: 50%;
+                border-radius: 0px 4px 4px 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*/---- products ends ----/*/
+
+/*/---- Add products starts ----/*/
+.main-sect {
+  .form-area-container {
+    .form-area {
+      .category {
+        .dropdown {
+          width: 100%;
+          display: block;
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+}
+/*/---- Add products ends ----/*/

@@ -1,0 +1,93 @@
+<!-- Acount container -->
+<section class="settings-container">
+  <div class="col-1">
+    <div class="settings-checker">
+      <div class="secur-set row">
+        <h5>Security settings</h5>
+        <div class="input-item">
+          <div class="switch">
+            <input id="switch-1" type="checkbox" class="switch-input" />
+            <label for="switch-1" class="switch-label"></label>
+          </div>
+          <p>Save my Activities Log</p>
+        </div>
+        <div class="input-item">
+          <div class="switch">
+            <input id="switch-2" type="checkbox" class="switch-input" />
+            <label for="switch-2" class="switch-label"></label>
+          </div>
+          <p>Confirm me through email before password change</p>
+        </div>
+      </div>
+      <div class="manage-notifi row">
+        <h5>Manage notification</h5>
+        <div class="input-item">
+          <div class="switch">
+            <input id="switch-3" type="checkbox" class="switch-input" />
+            <label for="switch-3" class="switch-label"></label>
+          </div>
+          <p>Notify me by confirm about sales and latest news</p>
+        </div>
+        <div class="input-item">
+          <div class="switch">
+            <input id="switch-4" type="checkbox" class="switch-input" />
+            <label for="switch-4" class="switch-label"></label>
+          </div>
+          <p>Alert me by confirm for unusual activity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pass-update">
+      <h5>Update Password</h5>
+      <form action="" class="form">
+        <!-- Form inputs -->
+        <div class="form-change-password">
+          <div class="password">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="" />
+          </div>
+          <div id="empty-div"></div>
+          <!-- Empty Div-->
+          <div class="new-password">
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" class="" />
+          </div>
+          <div class="confirm-new-password">
+            <label for="confirm-new-password">Confirm New Password</label>
+            <input type="password" id="confirm-new-password" class="" />
+          </div>
+        </div>
+        <!-- Form warning -->
+        <span class="warning-msg">
+          <img src="../../assets/img/svg/bxs-info-circle.svg" alt="" />
+          <p>Password should be minmum 8 letter.</p>
+        </span>
+        <!-- Form submit button -->
+        <div class="form-submit-btn">
+          <a href="#!" class="btn prim-btn">Update</a>
+          <span class="success-msg">
+            <img src="../../assets/img/svg/checked.svg" alt="" />
+            <p>All changes are saved</p>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="fact-veri">
+      <h5>Two-Factor Verification</h5>
+      <p>
+        Two-factor authentication is a method for protection your web account.
+        When it is activated you need to enter not only your password, but also
+        a special code. You can receive this code by in mobile app. Even if
+        third person will find your password, then can't access with that code.
+      </p>
+      <div class="fact-veri-btn">
+        <a href="#!" class="btn prim-btn">Enable 2fa</a>
+        <span class="fact-veri-btn-status status-info">
+          <p class="uppercase">Current status: <strong>Disabled</strong></p>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

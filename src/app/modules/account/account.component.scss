@@ -1,0 +1,194 @@
+@import '../../../assets/scss/control-panel';
+
+/*/---- Sidenav starts ----/*/
+// Style is in _control-panel.scss
+/*/---- Sidenav ends ----/*/
+
+/*/---- Main start ----/*/
+.account-container {
+  .account-banner {
+    @include white-background;
+    padding-bottom: 1rem;
+    &-bg {
+      .cover-image {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../../../assets/img/account/bg-3.jpg);
+        background-size: cover;
+        background-position: center;
+        min-height: 250px;
+        width: 100%;
+        h4 {
+          font-size: 24px + 4;
+          color: $white-color;
+          padding: 5rem 0 0 3rem;
+        }
+      }
+    }
+    &-info {
+      padding: 1rem;
+      padding-bottom: 0.5rem;
+      @media only screen and (min-width: 585px) {
+          display: flex;
+          align-items: center;
+      }
+      &-image {
+          max-width: 100px;
+          margin-top: -40px;
+          margin-right: 20px;
+          cursor: pointer;
+          .profile-image {
+              width: 100%;
+              border-radius: 50%;
+          }
+      }
+      &-details {
+        color: $dark-color3;
+        @media only screen and (min-width: 585px) {
+          display: flex;
+          align-items: center;
+        }
+        h4 {
+          font-size: 1.340rem;
+          font-weight: 500;
+          margin-bottom: 0.3rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+        .profile-name {
+          margin-right: 2rem;
+          h4 {
+            color: $primary-color;
+          }
+          @media only screen and (max-width: 585px) {
+            margin-bottom: 1rem;
+          }
+        }
+        .profile-email {
+          h4 {
+            color: $dark-color1;
+          }
+        }
+      }
+    }
+  }
+  .account-profile {
+    @include white-background;
+    // width: 70%;
+    padding: 0;
+    .main-sect-heading-left {
+      color: $dark-color1;
+      border-bottom: 1px solid $light-color;
+      padding: 1.5rem;
+    }
+    &-details {
+      color: $dark-color2;
+      padding: 0 1.5rem;
+      h5 {
+        font-size: 16px !important;
+      }
+      .account-info {
+        padding: 1.5rem 0;
+        form {
+          display: grid;
+          grid-gap: 2rem;
+          padding: 1rem 1.5rem 0 1.5rem;
+          input {
+              width: 100%;
+              color: $dark-color2;
+              font-size: $button-lg-font;
+              border: 1px solid #BFBFBF;
+              border-radius: $border-radius;
+              padding: 0.8rem;
+              transition: all 0.2s;
+              outline: none;
+              margin-top: 1rem;
+              @include border-hover;
+              @include transition(0.2s);
+              &::placeholder {
+                  color: #BFBFBF;
+              }
+          }
+        }
+        &.user-info {
+          border-bottom: 1px solid $light-color;
+          form {
+            @media only screen and (min-width: 585px) {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        }
+        &.contact-info {
+          form {
+            @media only screen and (min-width: 585px) {
+              grid-template-columns: repeat(3, 1fr);
+              .address {
+                grid-column: 1 / span 3;
+              }
+            }
+          }
+        }
+        &.update-btn {
+          @include update-changes;
+        }
+      }
+    }
+  }
+}
+/*/---- Main ends ----/*/
+
+/*/----  Acount banner edit Modal starts ----/*/
+.account-banner-edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  place-items: center;
+  background-color: #b1b1b13a;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  visibility: hidden;
+  & > div {
+    width: 500px;
+    margin: auto;
+    position: relative;
+    @include white-background;
+    @media only screen and (max-width: 585px) {
+      width: 90%;
+    }
+    form {
+      display: grid;
+      grid-gap: 2rem;
+      padding: 1rem 1.5rem 0 1.5rem;
+      input {
+        width: 100%;
+        color: $dark-color2;
+        font-size: $button-lg-font;
+        border: 1px solid #BFBFBF;
+        border-radius: $border-radius;
+        padding: 0.8rem;
+        transition: all 0.2s;
+        outline: none;
+        margin-top: 1rem;
+        @include border-hover;
+        @include transition(0.2s);
+        &::placeholder {
+          color: #BFBFBF;
+        }
+      }
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 28px;
+      height: 28px;
+    }
+  }
+  &.pop-up {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/*/----  Acount banner edit Modal ends ----/*/

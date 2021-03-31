@@ -1,0 +1,119 @@
+<!-- Acount container -->
+<section class="account-container main-sect">
+  <!-- Acount banner -->
+  <div class="account-banner">
+    <div class="account-banner-bg">
+      <div class="cover-image">
+        <h4>Hi, Welcome back!</h4>
+      </div>
+    </div>
+    <div class="account-banner-info">
+      <div class="account-banner-info-image" (click)="toggleModal()">
+        <img [src]="user.imageUrl" alt="" class="profile-image" />
+      </div>
+      <div class="account-banner-info-details">
+        <div class="profile-name">
+          <h4>{{ user.name }}</h4>
+          <p>Software Developer</p>
+        </div>
+        <div class="profile-email">
+          <h4>{{ user.emailAddress }}</h4>
+          <p>Email</p>
+        </div>
+      </div>
+    </div>
+    <!-- Acount banner edit -->
+  </div>
+
+  <!-- Account profile -->
+  <div class="account-profile">
+    <div class="main-sect-heading-left">
+      <h5>Profile Details</h5>
+    </div>
+    <div class="account-profile-details">
+      <div class="user-info account-info">
+        <h5 class="uppercase">User Information</h5>
+        <form action="">
+          <div class="user-name">
+            <label for="name">Username</label>
+            <input type="text" name="name" [(ngModel)]="user.name" />
+          </div>
+          <div class="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" [(ngModel)]="user.emailAddress" />
+          </div>
+          <div class="first-name">
+            <label for="firstname">First Name</label>
+            <input type="text" placeholder="David" id="firstname" class="" />
+          </div>
+          <div class="last-name">
+            <label for="lastname">Last Name</label>
+            <input type="text" placeholder="Aremu" id="lastname" class="" />
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-info account-info">
+        <h5 class="uppercase">Contact Information</h5>
+        <form action="">
+          <div class="address">
+            <label for="address">Address</label>
+            <input
+              type="text"
+              placeholder="14B Parkview Estate"
+              id="address"
+              class=""
+            />
+          </div>
+          <div class="city">
+            <label for="city">City</label>
+            <input type="text" placeholder="Lagos" id="city" class="" />
+          </div>
+          <div class="country">
+            <label for="country">Country</label>
+            <input type="text" placeholder="Nigeria" id="country" class="" />
+          </div>
+          <div class="number">
+            <label for="number">Mobile Number</label>
+            <input type="tel" placeholder="08035465790" id="number" class="" />
+          </div>
+        </form>
+      </div>
+
+      <div class="update-btn account-info">
+        <a href="#!" class="btn prim-btn">Update</a>
+        <span class="success-msg">
+          <img src="../../assets/img/svg/checked.svg" alt="" />
+          <p>All Changes are saved</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Acount banner edit Modal starts -->
+<div class="account-banner-edit" [class.pop-up]="showModal">
+  <div>
+    <form action="">
+      <div class="pop-image">
+        <label for="pop-image">Profile Image</label>
+        <input type="file" id="pop-image" />
+      </div>
+      <div class="role">
+        <label for="role">Role</label>
+        <input type="text" placeholder="Software Developer" class="" />
+      </div>
+      <div class="button">
+        <a href="#!" class="btn sec2-btn">Update</a>
+      </div>
+    </form>
+    <!-- Close Modal -->
+    <img
+      src="../../../assets/img/svg/close.svg"
+      alt=""
+      class="modal-close clickable"
+      (click)="showModal = false"
+    />
+  </div>
+</div>
+<!-- Acount banner edit Modal ends -->

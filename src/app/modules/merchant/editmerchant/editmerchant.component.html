@@ -1,0 +1,134 @@
+<!-- EDIT VENDORS -->
+<section class="main-sect">
+  <div class="main-sect-heading">
+    <div class="main-sect-heading-left">
+      <h5 class="clickable" (click)="showVendorSect()">
+        <img src="../../../../assets/img/svg/arrow-left.svg" alt="" />
+        Merchant
+      </h5>
+      <img src="../../../assets/img/svg/line.svg" alt="" />
+      <p>Edit Merchant</p>
+    </div>
+  </div>
+  <div class="form-area-container">
+    <div class="form-area">
+      <form
+        (ngSubmit)="onEdit($event)"
+        name="vendorForm"
+        [formGroup]="vendorForm"
+      >
+        <div class="form-area-field image">
+          <label for="image">Image</label>
+          <input
+            type="file"
+            name="vendors"
+            placeholder="Upload"
+            (change)="onFileSelected($event)"
+            #vendorImage
+            style="display: none"
+            required
+          />
+          <span (click)="vendorImage.click()" class="col-2 select-field">
+            Upload
+            <img src="../../../assets/img/svg/upload.svg" alt="" />
+          </span>
+        </div>
+        <div class="form-area-field name">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            placeholder="Product name"
+            class="col-2"
+            #title
+            formControlName="title"
+            [(ngModel)]="currentVendor.title"
+          />
+        </div>
+        <div class="form-area-field address">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            placeholder="Address"
+            class="col-2"
+            #address
+            formControlName="address"
+            [(ngModel)]="currentVendor.address"
+          />
+        </div>
+        <div class="form-area-field email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            class="col-2"
+            #email
+            formControlName="email"
+            [(ngModel)]="currentVendor.email"
+          />
+        </div>
+        <div class="form-area-field open">
+          <label for="open">Opens At</label>
+          <input
+            type="text"
+            placeholder="Opening time"
+            class="col-2"
+            #opensAt
+            formControlName="opensAt"
+            [(ngModel)]="currentVendor.opensAt"
+          />
+        </div>
+        <div class="form-area-field close">
+          <label for="close">Closes At</label>
+          <input
+            type="text"
+            placeholder="Closing time"
+            class="col-2"
+            #closesAt
+            formControlName="closesAt"
+            [(ngModel)]="currentVendor.closesAt"
+          />
+        </div>
+        <div class="form-area-field phone-number">
+          <label for="phone-number">Phone Number</label>
+          <input
+            type="tel"
+            placeholder="08036577028"
+            class="col-2"
+            #phoneNumber
+            formControlName="phoneNumber"
+            [(ngModel)]="currentVendor.phoneNumber"
+          />
+        </div>
+        <div class="form-area-field description">
+          <label for="description">Description</label>
+          <textarea
+            cols="30"
+            rows="6"
+            class="select-field col-2"
+            #description
+            formControlName="description"
+            [(ngModel)]="currentVendor.description"
+          ></textarea>
+        </div>
+        <div class="form-area-field form-btn">
+          <button
+            [disabled]="loading"
+            class="btn prim-btn"
+            (click)="onEdit(currentVendor)"
+          >
+            <span *ngIf="loading">Editing!</span>
+            <span *ngIf="!loading">Edit</span>
+          </button>
+          <span class="success-msg col-2" *ngIf="successMessage">
+            <img src="../../assets/img/svg/checked.svg" alt="" />
+            <p>All Changes are saved</p>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="preview-area">
+      <p *ngIf="showPreviewText">Image Preview</p>
+      <img [src]="previewImage" alt="" *ngIf="showPreviewImage" />
+    </div>
+  </div>
+</section>

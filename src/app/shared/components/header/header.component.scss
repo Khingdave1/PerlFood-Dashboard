@@ -1,0 +1,243 @@
+@import "../../../../assets/scss/control-panel";
+
+.header-container {
+  // MOBILE VIEW TOP
+  .mobile-view-top {
+    display: none;
+    margin-bottom: 2rem;
+    @media only screen and (max-width: 745px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .menu-icon {
+      width: 40px;
+      height: 40px;
+    }
+    .logo {
+      width: 150px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  // TOP NAV
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    &-left,
+    &-right {
+      display: flex;
+      align-items: center;
+    }
+    &-left {
+      padding: 4px;
+      @include transition(0.4s);
+      border-radius: $border-radius;
+      &:hover {
+        background-color: $white-color;
+      }
+      input {
+        border: none;
+        outline: none;
+        padding: 0.5rem;
+        font-size: $button-lg-font;
+        background-color: transparent;
+        &::placeholder {
+          color: $dark-color3;
+        }
+        @media only screen and (max-width: 745px) {
+          width: 100px;
+        }
+      }
+      @media only screen and (max-width: 745px) {
+        input {
+          width: 0;
+          @include transition(0.4s);
+        }
+        &:hover input {
+          width: 150px;
+        }
+      }
+    }
+    &-right {
+      .notifi-dropbtn,
+      .profile-picture {
+        border-radius: 50%;
+        padding: 4px;
+
+        @include transition(0.2s);
+        &:hover {
+          background-color: $white-color;
+        }
+      }
+      // Notifi Dropdown
+      .notifi-dropdown {
+        position: relative;
+        margin-right: 2rem;
+        .notifi-dropbtn {
+          color: $grey-color2;
+          position: relative;
+          .notifi-dot {
+            @include notification-dot;
+            position: absolute;
+            top: 2px;
+            right: 8px;
+          }
+        }
+        .notifi-dropdown-content {
+          // display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: #ffffff;
+          width: 420px;
+          border-radius: $border-radius;
+          box-shadow: $box-shadow;
+          z-index: 1;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          opacity: 0;
+          visibility: hidden;
+          &-heading {
+            padding: 1rem;
+            font-size: 0.9375rem !important;
+            color: $dark-color1;
+            strong {
+              color: $primary-color;
+            }
+          }
+          &-list {
+            .notifi-dropdown-content-item {
+              width: 100%;
+              color: $dark-color1;
+              & > div {
+                display: flex;
+                align-items: center;
+                border: 1px solid $light-color;
+                padding: 1rem;
+                &:hover {
+                  background-color: #f6f9fc;
+                }
+                .notifi-dropdown-content-img {
+                  padding-right: 1.2rem;
+                  .avatar {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                  }
+                }
+                .notifi-dropdown-content-text {
+                  width: 100%;
+                  &-top {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 0.3rem;
+                    h4 {
+                      font-size: 0.9375rem !important;
+                      font-weight: 600;
+                      line-height: 1.5;
+                    }
+                    small {
+                      font-size: 80%;
+                    }
+                  }
+                  p {
+                    font-size: 0.875rem !important;
+                    font-weight: 300;
+                    line-height: 1.7;
+                  }
+                }
+              }
+            }
+          }
+          &-all {
+            padding: 1rem;
+            text-align: center;
+            color: $primary-color;
+            display: inline-block;
+            width: 100%;
+            &:hover {
+              background-color: #f6f9fc;
+            }
+          }
+          &.show-content {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      // Profile Dropdown
+      .profile-dropdown {
+        position: relative;
+        .profile-dropbtn {
+          color: $grey-color2;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          .profile-picture {
+            width: 48px;
+            height: 48px;
+          }
+          .profile-name {
+            margin-right: 1rem;
+            p {
+              color: $dark-color2;
+              &.admin-title {
+                font-size: $button-md-font;
+              }
+              &:last-child {
+                float: right;
+              }
+            }
+          }
+        }
+        .profile-dropdown-content {
+          // display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: $white-color;
+          width: 150px;
+          border-radius: $border-radius;
+          box-shadow: $box-shadow;
+          z-index: 1;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          opacity: 0;
+          visibility: hidden;
+          li {
+            font-size: 13.33px;
+            color: $dark-color1;
+            padding: 10px 12px;
+            display: block;
+            font-weight: normal;
+            white-space: pre;
+            min-height: 1.2em;
+            cursor: pointer;
+            &:hover {
+              background-color: $primary-color;
+              color: $white-color;
+              img {
+                filter: brightness(1);
+              }
+            }
+            img {
+              filter: brightness(0.2);
+              vertical-align: middle;
+              margin-right: 1rem;
+            }
+          }
+          &.show-content {
+            // display: block;
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}

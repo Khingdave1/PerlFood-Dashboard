@@ -1,0 +1,113 @@
+<!-- ADD RIDERS -->
+<section class="main-sect">
+  <div class="main-sect-heading">
+    <div class="main-sect-heading-left">
+      <h5 class="clickable" (click)="showRiderSect()">
+        <img src="../../../../assets/img/svg/arrow-left.svg" alt="" />
+        Riders
+      </h5>
+      <img src="../../../assets/img/svg/line.svg" alt="" />
+      <p>Add Rider</p>
+    </div>
+  </div>
+  <div class="form-area-container">
+    <div class="form-area">
+      <form (ngSubmit)="onUpload()" name="riderForm" [formGroup]="riderForm">
+        <div class="form-area-field image">
+          <label for="image">Image</label>
+          <input
+            type="file"
+            name="vendors"
+            placeholder="Upload"
+            (change)="onFileSelected($event)"
+            #riderImage
+            style="display: none"
+            required
+          />
+          <span (click)="riderImage.click()" class="col-2 select-field">
+            Upload
+            <img src="../../../assets/img/svg/upload.svg" alt="" />
+          </span>
+        </div>
+        <div class="form-area-field name">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            placeholder="First Name"
+            class="col-2"
+            #firstName
+            formControlName="firstName"
+          />
+        </div>
+        <div class="form-area-field name">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="col-2"
+            #lastName
+            formControlName="lastName"
+          />
+        </div>
+        <div class="form-area-field email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            class="col-2"
+            #email
+            formControlName="email"
+          />
+        </div>
+        <div class="form-area-field address">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            placeholder="Address"
+            class="col-2"
+            #address
+            formControlName="address"
+          />
+        </div>
+        <div class="form-area-field gender">
+          <label for="gender">Gender</label>
+          <mat-form-field class="select-field col-2">
+            <mat-select #gender formControlName="gender">
+              <mat-option *ngFor="let item of genders" [value]="item.value">{{
+                item.viewValue
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-area-field phone-number">
+          <label for="phone-number">Phone Number</label>
+          <input
+            type="tel"
+            placeholder="08036577028"
+            class="col-2"
+            #phoneNumber
+            formControlName="phoneNumber"
+          />
+        </div>
+        <div class="form-area-field form-btn">
+          <button
+            [disabled]="loading"
+            class="btn prim-btn"
+            (click)="onUpload()"
+          >
+            <span *ngIf="loading">Uploading!</span>
+            <span *ngIf="!loading">Upload</span>
+          </button>
+          <span class="success-msg col-2" *ngIf="successMessage">
+            <img src="../../assets/img/svg/checked.svg" alt="" />
+            <p>Rider added successfully!</p>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="preview-area">
+      <p *ngIf="showPreviewText">Image Preview</p>
+      <img [src]="previewImage" alt="" *ngIf="showPreviewImage" />
+    </div>
+  </div>
+</section>

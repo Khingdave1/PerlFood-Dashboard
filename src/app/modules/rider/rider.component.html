@@ -1,0 +1,106 @@
+<!-- RIDERS -->
+<section class="main-sect" *ngIf="riderSect">
+  <div class="main-sect-heading">
+    <div class="main-sect-heading-left">
+      <h5>Riders</h5>
+    </div>
+    <div class="main-sect-btns uppercase">
+      <a href="#" class="btn trans-btn">
+        <img src="../../assets/img/svg/download.svg" alt="" />
+        Download
+      </a>
+      <a class="btn dark-btn" (click)="showAddRiderSect()">
+        <img src="../../assets/img/svg/white-plus.svg" alt="" />
+        Add Rider
+      </a>
+    </div>
+  </div>
+
+  <!-- Table Area -->
+  <div class="table-area">
+    <div class="table-area-heading">
+      <div class="table-area-heading-left">
+        <p class="table-total">{{ riders?.length }} Riders</p>
+        <img src="../../assets/img/svg/line.svg" alt="" />
+        <p>0 Dispatched already</p>
+      </div>
+      <div class="table-area-heading-right">
+        <span class="table-search">
+          <img src="../../assets/img/svg/search.svg" alt="search" />
+          <!-- <p>You can search here...</p> -->
+          <input type="text" class="" placeholder="Search..." />
+        </span>
+        <span class="table-filter dropdown">
+          <p class="dropbtn">
+            Dispatched
+            <img src="../../assets/img/svg/chevron-down.svg" alt="" />
+          </p>
+          <ul class="dropdown-content">
+            <li>All riders</li>
+            <li>Top riders</li>
+            <li>Some riders</li>
+          </ul>
+        </span>
+      </div>
+    </div>
+    <div class="table-area-body">
+      <ul class="table-list" *ngIf="riders?.length > 0; else noItems">
+        <li class="table-heading">
+          <p class="name">Riders Name</p>
+          <p class="email">Email</p>
+          <p class="number">Phone number</p>
+          <p class="status">Status</p>
+          <p class="action">Action</p>
+        </li>
+        <li class="table-item" *ngFor="let i of riders">
+          <p class="name">{{ i.firstName }} {{ i.lastName }}</p>
+          <p class="email">{{ i.email }}</p>
+          <p class="number">{{ i.phoneNumber }}</p>
+          <p class="status">{{ i.status }}</p>
+          <p class="action uppercase">
+            <a class="btn sec1-btn" (click)="showViewRiderSect(i)">View</a>
+            <a class="btn dark-btn" (click)="showEditRiderSect(i)">Edit</a>
+            <a class="btn danger-btn" (click)="onRemove(i)">Disable</a>
+          </p>
+        </li>
+      </ul>
+      <div class="pagination">
+        <a href="#"><img src="../../assets/img/svg/arrow-left.svg" alt="" /></a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">...</a>
+        <a href="#">12</a>
+        <a href="#"
+          ><img src="../../assets/img/svg/arrow-right.svg" alt=""
+        /></a>
+      </div>
+
+      <!-- If the Product List is empty -->
+      <ng-template #noItems>
+        <p class="empty-list">Empty list</p>
+      </ng-template>
+    </div>
+  </div>
+</section>
+
+<!-- ADD RIDERS -->
+<app-addrider
+  *ngIf="addRiderSect"
+  (parentData)="showRiderSect()"
+></app-addrider>
+
+<!-- EDIT RIDERS -->
+<app-editrider
+  *ngIf="editRiderSect"
+  (parentData)="showRiderSect()"
+  [riderData]="currentRider"
+></app-editrider>
+
+<!-- VIEW EACH RIDER -->
+<app-eachrider
+  *ngIf="viewRiderSect"
+  (parentData)="showRiderSect()"
+  [riderData]="currentRider"
+></app-eachrider>
