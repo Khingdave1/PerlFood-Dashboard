@@ -91,9 +91,9 @@
       </ul>
       <ul class="order-services-card dark-bg">
         <li class="order-services-card-heading">
-          <p class="white-text">Pasteries (<span>30 Orders</span>)</p>
+          <p class="white-text">Pastries (<span>30 Orders</span>)</p>
           <p class="uppercase">
-            <a (click)="showOrderPasteries()" class="see-all accent-text"
+            <a (click)="showOrderPastries()" class="see-all accent-text"
               >See all</a
             >
           </p>
@@ -143,15 +143,84 @@
             <p>Coddy Musa</p>
           </li>
         </ul>
-        <a href="#" class="view-more uppercase">View more</a>
+        <a (click)="scroll(tableArea)" class="view-more uppercase">View more</a>
       </div>
     </div>
   </div>
 
+  <!-- Order Chart -->
   <div class="order-statistic">
     <h6 class="order-statistic-heading">Order statictics</h6>
     <div class="chart">
       <canvas id="orderStatisticChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Table Area -->
+  <div class="table-area" #tableArea>
+    <div class="table-area-heading">
+      <div class="table-area-heading-left">
+        <p class="table-total">{{ orders?.length }} Orders</p>
+        <img src="../../../../assets/img/svg/line.svg" alt="" />
+        <p>1 Deliveries made</p>
+      </div>
+      <div class="table-area-heading-right">
+        <span class="table-search">
+          <img src="../../../../assets/img/svg/search.svg" alt="search" />
+          <input type="text" class="" placeholder="Search..." />
+        </span>
+        <span class="table-filter dropdown">
+          <p class="dropbtn">
+            All Orders
+            <img src="../../../../assets/img/svg/chevron-down.svg" alt="" />
+          </p>
+          <ul class="dropdown-content">
+            <li>All orders</li>
+            <li>Top orders</li>
+            <li>Some orders</li>
+          </ul>
+        </span>
+      </div>
+    </div>
+    <div class="table-area-body">
+      <ul class="table-list" *ngIf="orders?.length > 0; else noItems">
+        <li class="table-heading">
+          <p class="id">Order id</p>
+          <p class="customer">Customer</p>
+          <p class="receiver">Receiver</p>
+          <p class="address">Address</p>
+          <p class="status">Status</p>
+          <p class="action">Action</p>
+        </li>
+        <li class="table-item" *ngFor="let item of orders">
+          <p class="id">#ES120391</p>
+          <p class="customer">{{ item.user }}</p>
+          <p class="receiver">Logun Jay S.</p>
+          <p class="address">34 bide Str, Ilorin</p>
+          <p class="status">Delivered</p>
+          <p class="action uppercase">
+            <a (click)="showViewOrder(item)" class="btn sec1-btn">View</a>
+          </p>
+        </li>
+      </ul>
+      <div class="pagination">
+        <a href="#"
+          ><img src="../../../../assets/img/svg/arrow-left.svg" alt=""
+        /></a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">...</a>
+        <a href="#">12</a>
+        <a href="#"
+          ><img src="../../../../assets/img/svg/arrow-right.svg" alt=""
+        /></a>
+      </div>
+      <!-- If the Product List is empty -->
+      <ng-template #noItems>
+        <p class="empty-list">Empty list</p>
+      </ng-template>
     </div>
   </div>
 </div>
@@ -175,7 +244,13 @@
 ></app-orderdrink>
 
 <!-- Order (Pasteries) -->
-<app-orderpastery
-  *ngIf="orderPasterySect"
+<app-orderpastry
+  *ngIf="orderPastrySect"
   (parentData)="showOrder()"
-></app-orderpastery>
+></app-orderpastry>
+
+<app-vieworder
+  *ngIf="viewOrderSect"
+  (parentData)="showOrder()"
+  [orderData]="currentOrder"
+></app-vieworder>

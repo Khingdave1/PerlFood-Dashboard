@@ -24,7 +24,8 @@ import { PaymentComponent } from 'src/app/modules/payment/payment.component'
 import { OrderafricanComponent } from 'src/app/modules/order/orderafrican/orderafrican.component';
 import { OrdercontinentalComponent } from 'src/app/modules/order/ordercontinental/ordercontinental.component';
 import { OrderdrinkComponent } from 'src/app/modules/order/orderdrink/orderdrink.component';
-import { OrderpasteryComponent } from 'src/app/modules/order/orderpastery/orderpastery.component';
+import { OrderpastryComponent } from 'src/app/modules/order/orderpastry/orderpastry.component';
+import { VieworderComponent } from 'src/app/modules/order/vieworder/vieworder.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -81,7 +82,8 @@ import { from } from 'rxjs';
     OrderafricanComponent,
     OrdercontinentalComponent,
     OrderdrinkComponent,
-    OrderpasteryComponent
+    OrderpastryComponent,
+    VieworderComponent
   ],
   imports: [
     CommonModule,

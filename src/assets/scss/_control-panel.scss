@@ -225,9 +225,9 @@ main {
         display: grid;
         grid-gap: 2rem;
         width: 100%;
-        @media only screen and (max-width: 885px) {
-          width: max-content;
-        }
+        // @media only screen and (max-width: 885px) {
+        //   width: max-content;
+        // }
         li {
           display: flex;
           align-items: center;

@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
 
+  sidebar: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
+    if (window.innerWidth < 745) {
+      this.sidebar = false;
+    }
+    // else {
+    //   this.sidebar = true;
+    //   console.log("Bye!")
+    // }
   }
 
+  // Show Sidebar
+  showSidebar() {
+    this.sidebar = true;
+  }
+
+  // Hide Sidebar
+  hideSidebar() {
+    this.sidebar = false
+  }
 }

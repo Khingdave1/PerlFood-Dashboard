@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/app/interfaces/profile';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -11,9 +11,10 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output("openSidebar") openSidebar: EventEmitter<any> = new EventEmitter();
+
   showNotifi: boolean;
   showProfile: boolean;
-  // q:any
   profile: any;
   userId: any;
   users: any;
@@ -34,9 +35,18 @@ export class HeaderComponent implements OnInit {
       });
     })
 
+    // if (window.innerWidth < 658) {
+
+    //   console.log("Welcome")
+    // }
+
   }
 
 
+  // Show Sidebar
+  showSidebar() {
+    this.openSidebar.emit();
+  }
 
   // Toogle Notification
   toggleNotifi() {
@@ -46,6 +56,7 @@ export class HeaderComponent implements OnInit {
       this.showNotifi = true;
     }
   }
+
   // Toogle Profile
   toggleProfile() {
     if (this.showProfile == true) {
@@ -61,9 +72,5 @@ export class HeaderComponent implements OnInit {
 
     window.location.reload()
   }
-
-  // getUserProfile() {
-  //   this.profile = this.profileService.getSingleUser(this.userId).su
-  // }
 
 }

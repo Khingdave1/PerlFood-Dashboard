@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-orderpastery',
-  templateUrl: './orderpastery.component.html',
-  styleUrls: ['./orderpastery.component.scss']
+  selector: 'app-orderpastry',
+  templateUrl: './orderpastry.component.html',
+  styleUrls: ['./orderpastry.component.scss']
 })
-export class OrderpasteryComponent implements OnInit {
+export class OrderpastryComponent implements OnInit {
 
   @Output("parentData") parentData: EventEmitter<any> = new EventEmitter();
 

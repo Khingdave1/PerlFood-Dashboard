@@ -1,8 +1,12 @@
 <div class="container">
-  <app-sidebar></app-sidebar>
+  <app-sidebar
+    *ngIf="sidebar"
+    (closeSidebar)="hideSidebar()"
+    [parentData]="sidebar"
+  ></app-sidebar>
   <main>
     <!-- Header Container -->
-    <app-header></app-header>
+    <app-header (openSidebar)="showSidebar()"></app-header>
 
     <router-outlet></router-outlet>
   </main>

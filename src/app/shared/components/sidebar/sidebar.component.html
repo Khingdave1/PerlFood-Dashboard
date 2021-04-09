@@ -6,7 +6,7 @@
   </a>
 
   <!-- Close Icon -->
-  <div class="close-menu">
+  <div class="close-menu" (click)="hideSidebar()">
     <img src="../../assets/img/svg/close.svg" alt="" class="close-icon" />
   </div>
 
@@ -51,6 +51,8 @@
         <a routerLink="/order" routerLinkActive="active">
           <img src="../../assets/img/svg/order.svg" alt="" />
           <p>Orders</p>
+          <!-- Notification Dot -->
+          <!-- <span class="notifi-dot"></span> -->
         </a>
       </li>
       <li>
@@ -76,3 +78,5 @@
     </a>
   </div>
 </div>
+
+<!-- [class.show-sidenav]="sidebar" -->
