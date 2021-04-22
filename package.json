@@ -27,7 +27,6 @@
     "cloudinary-core": "^2.11.3",
     "file-saver": "^2.0.5",
     "firebase": "^7.0 || ^8.0",
-    "ng-click-outside": "^7.0.1",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.6",

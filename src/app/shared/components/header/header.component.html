@@ -30,7 +30,7 @@
     <!-- TOp Nav Right -->
     <span class="top-nav-right">
       <!-- Notification -->
-      <span class="notifi-dropdown">
+      <span class="notifi-dropdown" #notifiDropdown>
         <img
           src="../../assets/img/svg/notification.svg"
           alt="notifi"
@@ -38,7 +38,11 @@
           (click)="toggleNotifi()"
         />
 
-        <div class="notifi-dropdown-content" [class.show-content]="showNotifi">
+        <div
+          class="notifi-dropdown-content"
+          [class.show-content]="showNotifi"
+          #notifiDropdownContent
+        >
           <h6 class="notifi-dropdown-content-heading">
             You have <strong>13</strong> notifications
           </h6>
@@ -115,7 +119,11 @@
 
       <!-- Profile -->
       <span class="profile-dropdown">
-        <span class="profile-dropbtn clickable" (click)="toggleProfile()">
+        <span
+          #profileDropdown
+          class="profile-dropbtn clickable"
+          (click)="toggleProfile()"
+        >
           <span class="profile-name">
             <p>
               Hello, <strong id="admin-name">{{ user?.name }}</strong>
@@ -127,7 +135,7 @@
         <ul
           class="profile-dropdown-content"
           [class.show-content]="showProfile"
-          #pop
+          #profileDropdownContent
         >
           <li><img src="../../assets/img/svg/bx-envelope.svg" /> Inbox</li>
           <li routerLink="/account">

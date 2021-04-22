@@ -21,8 +21,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+// General
 .clickable {
   cursor: pointer;
+}
+
+input::placeholder {
+  font-family: "Poppins", sans-serif;
 }
 
 // Material

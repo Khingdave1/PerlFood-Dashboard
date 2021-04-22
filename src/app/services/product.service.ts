@@ -5,7 +5,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class ProductService {
-  products: any;
 
   constructor(private db: AngularFirestore) { }
 
@@ -14,7 +13,7 @@ export class ProductService {
 
   // Add Product
   addProduct(payload: any) {
-    return new Promise<any> ((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.collectionPath.add(payload).then(res => resolve(res), err => reject(err))
     })
   }
@@ -26,7 +25,7 @@ export class ProductService {
 
   // Update Product
   updateProduct(productId: string, payload: any) {
-    return new Promise<any> ((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.db.doc(this.collectionName + '/' + productId).update(payload).then(res => resolve(res), err => reject(err))
     })
   }

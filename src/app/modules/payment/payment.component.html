@@ -4,7 +4,7 @@
       <h5>Payments</h5>
     </div>
     <div class="main-sect-btns uppercase">
-      <a href="#" class="btn trans-btn">
+      <a class="btn trans-btn" (click)="exportexcel()">
         <img src="../../assets/img/svg/download.svg" alt="" />
         Download
       </a>
@@ -17,13 +17,19 @@
   <div class="table-area">
     <div class="table-area-heading">
       <div class="table-area-heading-left">
-        <p class="table-total">57 Payments</p>
+        <p class="table-total">{{ payments?.length }} Payments</p>
       </div>
       <div class="table-area-heading-right">
         <span class="table-search">
           <img src="../../assets/img/svg/search.svg" alt="search" />
           <!-- <p>You can search here...</p> -->
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Enter product to search"
+            name="product"
+            [(ngModel)]="product"
+            (input)="search()"
+          />
         </span>
         <span class="table-filter dropdown">
           <p class="dropbtn">
@@ -46,22 +52,20 @@
           <p class="channel">Channel</p>
           <p class="status">Status</p>
         </li>
-        <li class="table-item">
-          <p class="date">04/12/21</p>
-          <p class="product">Fried rice and chicken</p>
-          <p class="amount">2000</p>
-          <p class="channel">PayPal</p>
-          <p class="status">Successful</p>
-        </li>
-        <li class="table-item">
-          <p class="date">04/12/21</p>
-          <p class="product">Fried rice and chicken</p>
-          <p class="amount">2000</p>
-          <p class="channel">PayPal</p>
-          <p class="status">Successful</p>
+        <li
+          class="table-item"
+          *ngFor="
+            let item of payments | paginate: { itemsPerPage: 2, currentPage: p }
+          "
+        >
+          <p class="date">{{ item.date }}</p>
+          <p class="product">{{ item.product }}</p>
+          <p class="amount">{{ item.amount }}</p>
+          <p class="channel">{{ item.channel }}</p>
+          <p class="status">{{ item.status }}</p>
         </li>
       </ul>
-      <div class="pagination">
+      <!-- <div class="pagination">
         <a href="#"><img src="../../assets/img/svg/arrow-left.svg" alt="" /></a>
         <a href="#" class="active">1</a>
         <a href="#">2</a>
@@ -72,7 +76,11 @@
         <a href="#"
           ><img src="../../assets/img/svg/arrow-right.svg" alt=""
         /></a>
-      </div>
+      </div> -->
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="pagination"
+      ></pagination-controls>
     </div>
   </div>
 </section>

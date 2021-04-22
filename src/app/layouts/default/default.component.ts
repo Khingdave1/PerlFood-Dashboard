@@ -12,12 +12,8 @@ export class DefaultComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (window.innerWidth < 745) {
-      this.sidebar = false;
-    }
-    // else {
-    //   this.sidebar = true;
-    //   console.log("Bye!")
+    // if (window.innerWidth < 745) {
+    //   this.sidebar = false;
     // }
   }
 

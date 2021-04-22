@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, ElementRef, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { Profile } from 'src/app/interfaces/profile';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { ProfileService } from 'src/app/services/profile.service';
+
 
 @Component({
   selector: 'app-header',
@@ -12,6 +12,11 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class HeaderComponent implements OnInit {
 
   @Output("openSidebar") openSidebar: EventEmitter<any> = new EventEmitter();
+  // Get DOM element (#(the name))
+  @ViewChild('notifiDropdown') notifiDropdown: ElementRef;
+  @ViewChild('notifiDropdownContent') notifiDropdownContent: ElementRef;
+  @ViewChild('profileDropdown') profileDropdown: ElementRef;
+  @ViewChild('profileDropdownContent') profileDropdownContent: ElementRef;
 
   showNotifi: boolean;
   showProfile: boolean;
@@ -20,9 +25,33 @@ export class HeaderComponent implements OnInit {
   users: any;
   user: any
 
-  constructor(private firebaseService: FirebaseService, private router: Router, private profileService: ProfileService) {
+
+  // @HostListener('document:click', ['$event'])
+  // clickoutProfile(event: any) {
+  //   if (!this.eRef.nativeElement.contains(event.target)) {
+  //     this.showProfile = false;
+  //   }
+  // }
+
+  constructor(private firebaseService: FirebaseService, private profileService: ProfileService, private renderer: Renderer2) {
     this.showNotifi = false;
     this.showProfile = false;
+
+    // Click Outside to close element
+    this.renderer.listen('window', 'click', (e: Event) => {
+      let x = !this.profileDropdown.nativeElement.contains(e.target)
+      let y = !this.profileDropdownContent.nativeElement.contains(e.target)
+      if (x && y) {
+        this.showProfile = false;
+      }
+    });
+    this.renderer.listen('window', 'click', (e: Event) => {
+      let x = !this.notifiDropdown.nativeElement.contains(e.target)
+      let y = !this.notifiDropdownContent.nativeElement.contains(e.target)
+      if (x && y) {
+        this.showNotifi = false;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -42,7 +71,6 @@ export class HeaderComponent implements OnInit {
 
   }
 
-
   // Show Sidebar
   showSidebar() {
     this.openSidebar.emit();
@@ -50,20 +78,12 @@ export class HeaderComponent implements OnInit {
 
   // Toogle Notification
   toggleNotifi() {
-    if (this.showNotifi == true) {
-      this.showNotifi = false;
-    } else {
-      this.showNotifi = true;
-    }
+    this.showNotifi = !this.showNotifi
   }
 
   // Toogle Profile
   toggleProfile() {
-    if (this.showProfile == true) {
-      this.showProfile = false;
-    } else {
-      this.showProfile = true;
-    }
+    this.showProfile = !this.showProfile
   }
 
   // Log the user out

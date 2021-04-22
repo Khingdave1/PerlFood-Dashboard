@@ -8,16 +8,20 @@
       </div>
     </div>
     <div class="account-banner-info">
-      <div class="account-banner-info-image" (click)="toggleModal()">
-        <img [src]="user.imageUrl" alt="" class="profile-image" />
+      <div
+        class="account-banner-info-image"
+        (click)="toggleModal()"
+        #accountBannerInfoImage
+      >
+        <img [src]="user?.imageUrl" alt="" class="profile-image" />
       </div>
       <div class="account-banner-info-details">
         <div class="profile-name">
-          <h4>{{ user.name }}</h4>
+          <h4>{{ user?.name }}</h4>
           <p>Software Developer</p>
         </div>
         <div class="profile-email">
-          <h4>{{ user.emailAddress }}</h4>
+          <h4>{{ user?.emailAddress }}</h4>
           <p>Email</p>
         </div>
       </div>
@@ -93,7 +97,7 @@
 
 <!-- Acount banner edit Modal starts -->
 <div class="account-banner-edit" [class.pop-up]="showModal">
-  <div>
+  <div #accountBannerEdit>
     <form action="">
       <div class="pop-image">
         <label for="pop-image">Profile Image</label>
