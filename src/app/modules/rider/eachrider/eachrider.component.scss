@@ -45,6 +45,12 @@
       &:first-child {
         margin-right: 0.5rem;
       }
+      &.danger-btn {
+        // Add to the btn when disabled = true
+        &.cursor-disable {
+          cursor: not-allowed;
+        }
+      }
     }
   }
 }

@@ -57,7 +57,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { from } from 'rxjs';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -92,7 +92,8 @@ import { from } from 'rxjs';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxPaginationModule,
     // MatAutocompleteModule,
     // MatButtonModule,
     // MatButtonToggleModule,
@@ -129,7 +130,7 @@ import { from } from 'rxjs';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatFormFieldModule
+    NgxPaginationModule
     // MatAutocompleteModule,
     // MatButtonModule,
     // MatButtonToggleModule,

@@ -5,7 +5,7 @@
       <h5>Merchants</h5>
     </div>
     <div class="main-sect-btns uppercase">
-      <a href="#" class="btn trans-btn">
+      <a class="btn trans-btn" (click)="exportexcel()">
         <img src="../../assets/img/svg/download.svg" alt="" />
         Download
       </a>
@@ -24,7 +24,13 @@
         <span class="table-search">
           <img src="../../assets/img/svg/search.svg" alt="search" />
           <!-- <p>You can search here...</p> -->
-          <input type="text" class="" placeholder="Search..." />
+          <input
+            type="text"
+            name="title"
+            [(ngModel)]="title"
+            (input)="search()"
+            placeholder="Enter title to search"
+          />
         </span>
         <span class="table-filter dropdown">
           <p class="dropbtn">
@@ -40,7 +46,7 @@
       </div>
     </div>
     <div class="table-area-body">
-      <ul class="table-list" *ngIf="vendors?.length > 0; else noItems">
+      <ul class="table-list">
         <li class="table-heading">
           <p class="name">Name</p>
           <p class="email">Email</p>
@@ -51,20 +57,27 @@
         </li>
 
         <!-- Product List -->
-        <li class="table-item" *ngFor="let i of vendors">
-          <p class="name">{{ i.title }}</p>
-          <p class="email">{{ i.email }}</p>
-          <p class="address">{{ i.address }}</p>
-          <p class="number">{{ i.phoneNumber }}</p>
-          <p class="status">{{ i.status }}</p>
-          <p class="action uppercase">
-            <a class="btn sec1-btn">View</a>
-            <a class="btn dark-btn" (click)="showEditVendorSect(i)">Edit</a>
-            <a class="btn danger-btn" (click)="onRemove(i)">Delete</a>
-          </p>
-        </li>
+        <ng-container *ngIf="vendors?.length > 0; else noItems">
+          <li
+            class="table-item"
+            *ngFor="
+              let i of vendors | paginate: { itemsPerPage: 2, currentPage: p }
+            "
+          >
+            <p class="name">{{ i.title }}</p>
+            <p class="email">{{ i.email }}</p>
+            <p class="address">{{ i.address }}</p>
+            <p class="number">{{ i.phoneNumber }}</p>
+            <p class="status">{{ i.status }}</p>
+            <p class="action uppercase">
+              <a class="btn sec1-btn">View</a>
+              <a class="btn dark-btn" (click)="showEditVendorSect(i)">Edit</a>
+              <a class="btn danger-btn" (click)="onRemove(i)">Delete</a>
+            </p>
+          </li>
+        </ng-container>
       </ul>
-      <div class="pagination">
+      <!-- <div class="pagination">
         <a href="#"><img src="../../assets/img/svg/arrow-left.svg" alt="" /></a>
         <a href="#" class="active">1</a>
         <a href="#">2</a>
@@ -75,7 +88,11 @@
         <a href="#"
           ><img src="../../assets/img/svg/arrow-right.svg" alt=""
         /></a>
-      </div>
+      </div> -->
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="pagination"
+      ></pagination-controls>
 
       <!-- If the Product List is empty -->
       <ng-template #noItems>

@@ -7,6 +7,10 @@ import { CustomerComponent } from './modules/customer/customer.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { MerchantComponent } from './modules/merchant/merchant.component';
 import { OrderComponent } from './modules/order/order.component';
+import { OrderafricanComponent } from './modules/order/orderafrican/orderafrican.component';
+import { OrdercontinentalComponent } from './modules/order/ordercontinental/ordercontinental.component';
+import { OrderdrinkComponent } from './modules/order/orderdrink/orderdrink.component';
+import { OrderpastryComponent } from './modules/order/orderpastry/orderpastry.component';
 import { PaymentComponent } from './modules/payment/payment.component';
 import { ProductComponent } from './modules/product/product.component';
 import { RiderComponent } from './modules/rider/rider.component';
@@ -26,6 +30,10 @@ const routes: Routes = [
       { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
       { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard] },
       { path: 'order', component: OrderComponent, canActivate: [AuthGuard] },
+      { path: 'orderafrican', component: OrderafricanComponent },
+      { path: 'ordercontinental', component: OrdercontinentalComponent },
+      { path: 'orderdrink', component: OrderdrinkComponent },
+      { path: 'orderpastry', component: OrderpastryComponent },
       { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
       { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
       { path: 'rider', component: RiderComponent, canActivate: [AuthGuard] },

@@ -53,8 +53,17 @@
       </div>
     </div>
     <div class="rider-details-right uppercase">
-      <a href="#" class="btn sec1-btn">Edit</a>
-      <a href="#" class="btn danger-btn">Disable</a>
+      <a class="btn sec1-btn" (click)="showEditRiderSect()" *ngIf="hideEdit"
+        >Edit</a
+      >
+      <button
+        class="btn danger-btn"
+        (click)="onRemove(currentRider)"
+        [disabled]="disabledButton ? 'disabled' : null"
+        [class.cursor-disable]="disabledButton"
+      >
+        {{ loading }}
+      </button>
     </div>
   </div>
 

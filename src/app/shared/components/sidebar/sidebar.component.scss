@@ -1,5 +1,22 @@
 @import '../../../../assets/scss/control-panel';
 
+/*/---- Mixin starts ----/*/
+@mixin hover-active {
+  background-color: $primary-color;
+  border-radius: $border-radius;
+  color: $white-color;
+}
+@mixin hover-active2 {
+  .sidenav-icon {
+    filter: brightness(1);
+  }
+  .chevron-down {
+    filter: brightness(2);
+  }
+}
+/*/---- Mixin ends ----/*/
+
+
 /*/---- Sidenav starts ----/*/
 .sidenav {
     background: $gradient-color;
@@ -49,7 +66,7 @@
     // Logo
     &-logo {
       display: inline-block;
-      margin-bottom: 20%;
+      margin-bottom: 5%;
       @media only screen and (max-width: 885px) {
         margin-bottom: 3rem;
       }
@@ -74,50 +91,92 @@
     // List and Settings
     &-list,
     &-settings {
-        a {
-            display: flex;
-            align-items: center;
-            color: $dark-color2;
-            padding: 10px;
-            font-size: $button-md-font;
-            p {
-                margin-left: 1rem;
-            }
-            img {
-                filter: brightness(0.20);
-            }
+      a {
+        display: flex;
+        align-items: center;
+        color: $dark-color2;
+        padding: 10px;
+        font-size: $button-md-font;
+        p {
+          margin-left: 1rem;
         }
+        .sidenav-icon,
+        .chevron-down {
+          filter: brightness(0.20);
+        }
+      }
     }
     // List
     &-list {
       // margin-top: 5rem;
-      li {
+      // overflow-y: scroll;
+      // height: 400px;
+      padding-top: 5%;
+      border-top: 1px solid $grey-color1;
+      .sidenav-item {
         margin-bottom: 0.5rem;
-        a,
-        img {
-          @include transition(0.4s);
-        }
-        img {
-          width: 24px;
-          height: 24px;
-        }
-        a {
+        position: relative;
+        border-radius: $border-radius;
+        @include transition(0.4s);
+        &:hover,
+        &.active {
+          background-color: $primary-color;
           border-radius: $border-radius;
-          position: relative;
-          &:hover,
-          &.active {
-            background-color: $primary-color;
+          color: $white-color;
+          .sidenav-links {
             color: $white-color;
-            img {
+            .sidenav-icon {
               filter: brightness(1);
             }
+            .chevron-down {
+              filter: brightness(2);
+            }
           }
+        }
+        // Sidenav Icon
+        .sidenav-icon {
+          width: 24px;
+          height: 24px;
+          @include transition(0.4s);
+        }
+        .sidenav-links {
+          position: relative;
+          @include transition(0.4s);
+          // Notification dot
           .notifi-dot {
             @include notification-dot;
             position: absolute;
             top: 50%;
             right: 10px;
             transform: translateY(-50%);
+          }
+        }
+        // Chevron Down
+        .chevron-down {
+          @include transition(0.4s);
+          margin-left: 2rem;
+        }
+        &.order-link {
+          @include transition(0.4s);
+          &:hover .drop-down {
+            visibility: visible;
+            top: 100%;
+          }
+          .drop-down {
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 90%;
+            width: 100%;
+            background-color: $white-color;
+            color: $dark-color1;
+            box-shadow: $box-shadow;
+            @include transition(0.4s);
+            z-index: 99;
+            a:hover {
+              color: $primary-color;
+              @include transition(0.4s);
+            }
           }
         }
       }

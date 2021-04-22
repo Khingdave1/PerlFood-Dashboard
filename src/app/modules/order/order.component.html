@@ -1,8 +1,8 @@
 <!-- Orders -->
-<div class="main-sect" *ngIf="orderSect">
+<div class="main-sect">
   <div class="main-sect-heading">
     <div class="main-sect-heading-left">
-      <h6>Orders</h6>
+      <h5>Orders</h5>
     </div>
   </div>
   <div class="main-cards">
@@ -22,12 +22,12 @@
 
   <div class="order-grid">
     <div class="order-services">
-      <h6 class="order-services-heading">Categories</h6>
+      <h5 class="order-services-heading">Categories</h5>
       <ul class="order-services-card dark-bg">
         <li class="order-services-card-heading">
           <p class="white-text">African dish (<span>128 Orders</span>)</p>
           <p class="uppercase">
-            <a (click)="showOrderAfrican()" class="see-all accent-text"
+            <a routerLink="/orderafrican" class="see-all accent-text"
               >See all</a
             >
           </p>
@@ -49,7 +49,7 @@
         <li class="order-services-card-heading">
           <p class="white-text">Continental dish (<span>131 Orders</span>)</p>
           <p class="uppercase">
-            <a (click)="showOrderContinental()" class="see-all accent-text"
+            <a routerLink="/ordercontinental" class="see-all accent-text"
               >See all</a
             >
           </p>
@@ -71,9 +71,7 @@
         <li class="order-services-card-heading">
           <p class="white-text">Drinks (<span>123 Orders</span>)</p>
           <p class="uppercase">
-            <a (click)="showOrderDrink()" class="see-all accent-text"
-              >See all</a
-            >
+            <a routerLink="/orderdrink" class="see-all accent-text">See all</a>
           </p>
         </li>
         <li class="order-services-card-body">
@@ -93,9 +91,7 @@
         <li class="order-services-card-heading">
           <p class="white-text">Pastries (<span>30 Orders</span>)</p>
           <p class="uppercase">
-            <a (click)="showOrderPastries()" class="see-all accent-text"
-              >See all</a
-            >
+            <a routerLink="/orderpastry" class="see-all accent-text">See all</a>
           </p>
         </li>
         <li class="order-services-card-body">
@@ -152,7 +148,7 @@
   <div class="order-statistic">
     <h6 class="order-statistic-heading">Order statictics</h6>
     <div class="chart">
-      <canvas id="orderStatisticChart"></canvas>
+      <canvas id="orderChart"></canvas>
     </div>
   </div>
 
@@ -183,7 +179,7 @@
       </div>
     </div>
     <div class="table-area-body">
-      <ul class="table-list" *ngIf="orders?.length > 0; else noItems">
+      <ul class="table-list">
         <li class="table-heading">
           <p class="id">Order id</p>
           <p class="customer">Customer</p>
@@ -192,16 +188,18 @@
           <p class="status">Status</p>
           <p class="action">Action</p>
         </li>
-        <li class="table-item" *ngFor="let item of orders">
-          <p class="id">#ES120391</p>
-          <p class="customer">{{ item.user }}</p>
-          <p class="receiver">Logun Jay S.</p>
-          <p class="address">34 bide Str, Ilorin</p>
-          <p class="status">Delivered</p>
-          <p class="action uppercase">
-            <a (click)="showViewOrder(item)" class="btn sec1-btn">View</a>
-          </p>
-        </li>
+        <ng-container *ngIf="orders?.length > 0; else noItems">
+          <li class="table-item" *ngFor="let item of orders">
+            <p class="id">#ES120391</p>
+            <p class="customer">{{ item.user }}</p>
+            <p class="receiver">Logun Jay S.</p>
+            <p class="address">34 bide Str, Ilorin</p>
+            <p class="status">Delivered</p>
+            <p class="action uppercase">
+              <a routerLink="/" class="btn sec1-btn">View</a>
+            </p>
+          </li>
+        </ng-container>
       </ul>
       <div class="pagination">
         <a href="#"
@@ -224,33 +222,3 @@
     </div>
   </div>
 </div>
-
-<!-- Orders (African) -->
-<app-orderafrican
-  *ngIf="orderAfricanSect"
-  (parentData)="showOrder()"
-></app-orderafrican>
-
-<!-- Orders (Continental) -->
-<app-ordercontinental
-  *ngIf="orderContinentalSect"
-  (parentData)="showOrder()"
-></app-ordercontinental>
-
-<!-- Orders (Drinks) -->
-<app-orderdrink
-  *ngIf="orderDrinkSect"
-  (parentData)="showOrder()"
-></app-orderdrink>
-
-<!-- Order (Pasteries) -->
-<app-orderpastry
-  *ngIf="orderPastrySect"
-  (parentData)="showOrder()"
-></app-orderpastry>
-
-<app-vieworder
-  *ngIf="viewOrderSect"
-  (parentData)="showOrder()"
-  [orderData]="currentOrder"
-></app-vieworder>

@@ -5,7 +5,7 @@
       <h5>Riders</h5>
     </div>
     <div class="main-sect-btns uppercase">
-      <a href="#" class="btn trans-btn">
+      <a class="btn trans-btn" (click)="exportexcel()">
         <img src="../../assets/img/svg/download.svg" alt="" />
         Download
       </a>
@@ -52,19 +52,27 @@
           <p class="status">Status</p>
           <p class="action">Action</p>
         </li>
-        <li class="table-item" *ngFor="let i of riders">
-          <p class="name">{{ i.firstName }} {{ i.lastName }}</p>
-          <p class="email">{{ i.email }}</p>
-          <p class="number">{{ i.phoneNumber }}</p>
-          <p class="status">{{ i.status }}</p>
-          <p class="action uppercase">
-            <a class="btn sec1-btn" (click)="showViewRiderSect(i)">View</a>
-            <a class="btn dark-btn" (click)="showEditRiderSect(i)">Edit</a>
-            <a class="btn danger-btn" (click)="onRemove(i)">Disable</a>
-          </p>
-        </li>
+        <!-- Riders list -->
+        <ng-container *ngIf="riders?.length > 0; else noItems">
+          <li
+            class="table-item"
+            *ngFor="
+              let i of riders | paginate: { itemsPerPage: 2, currentPage: p }
+            "
+          >
+            <p class="name">{{ i.firstName }} {{ i.lastName }}</p>
+            <p class="email">{{ i.email }}</p>
+            <p class="number">{{ i.phoneNumber }}</p>
+            <p class="status">{{ i.status }}</p>
+            <p class="action uppercase">
+              <a class="btn sec1-btn" (click)="showViewRiderSect(i)">View</a>
+              <a class="btn dark-btn" (click)="showEditRiderSect(i)">Edit</a>
+              <a class="btn danger-btn" (click)="onRemove(i)">Disable</a>
+            </p>
+          </li>
+        </ng-container>
       </ul>
-      <div class="pagination">
+      <!-- <div class="pagination">
         <a href="#"><img src="../../assets/img/svg/arrow-left.svg" alt="" /></a>
         <a href="#" class="active">1</a>
         <a href="#">2</a>
@@ -75,7 +83,12 @@
         <a href="#"
           ><img src="../../assets/img/svg/arrow-right.svg" alt=""
         /></a>
-      </div>
+      </div> -->
+
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="pagination"
+      ></pagination-controls>
 
       <!-- If the Product List is empty -->
       <ng-template #noItems>
@@ -102,5 +115,6 @@
 <app-eachrider
   *ngIf="viewRiderSect"
   (parentData)="showRiderSect()"
+  (editData)="showEditRiderSect(currentRider)"
   [riderData]="currentRider"
 ></app-eachrider>

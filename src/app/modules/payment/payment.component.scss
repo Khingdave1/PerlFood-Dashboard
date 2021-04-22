@@ -1,0 +1,47 @@
+@import '../../../assets/scss/control-panel';
+
+/*/---- Sidenav starts ----/*/
+// Style is in _control-panel.scss
+/*/---- Sidenav ends ----/*/
+
+/*/---- Main start ----/*/
+.main-sect-heading {
+  .main-sect-btns {
+    .btn.trans-btn {
+      margin-right: 0;
+    }
+  }
+}
+
+.table-area {
+  &-body {
+    .table-list {
+      li {
+        p {
+          &.date {
+            flex-basis: 15%;
+          }
+          &.product {
+            flex-basis: 30%;
+          }
+          &.amount {
+            flex-basis: 25%;
+          }
+          &.channel {
+            flex-basis: 15%;
+          }
+          &.status {
+            flex-basis: 15%;
+          }
+          //.action is in _control-panel.scss
+        }
+        &.table-item {
+          p.status {
+            color: $success-color;
+          }
+        }
+      }
+    }
+  }
+}
+/*/---- Main ends ----/*/

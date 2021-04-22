@@ -96,6 +96,7 @@ h6 {
   border-radius: ($border-radius - 4);
   padding: 0.625rem 1.25rem;
   text-align: center;
+  border: transparent;
   outline: none;
   cursor: pointer;
   @include transition;

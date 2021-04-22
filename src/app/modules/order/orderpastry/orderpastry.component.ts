@@ -7,16 +7,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class OrderpastryComponent implements OnInit {
 
-  @Output("parentData") parentData: EventEmitter<any> = new EventEmitter();
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  // Show Rider Section
-  showOrder() {
-    this.parentData.emit();
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Rider } from 'src/app/interfaces/rider';
+import { ExportService } from 'src/app/services/export.service';
 import { RiderService } from 'src/app/services/rider.service';
 
 @Component({
@@ -15,8 +16,9 @@ export class RiderComponent implements OnInit {
   editRiderSect: boolean = false;
   viewRiderSect: boolean = false;
   currentRider: any;
+  p: number = 1;
 
-  constructor(private riderService: RiderService) { }
+  constructor(private riderService: RiderService, private exportService: ExportService) { }
 
   ngOnInit(): void {
     // Getting all Riders from Firebase
@@ -28,6 +30,7 @@ export class RiderComponent implements OnInit {
         this.riders.push(item)
       });
     })
+
   }
 
   // Show Rider Section
@@ -68,13 +71,18 @@ export class RiderComponent implements OnInit {
   }
 
   // View Rider
-  onView(rId: any) {
-    this.riderService.getSingleRider(rId)
-  }
+  // onView(rId: any) {
+  //   this.riderService.getSingleRider(rId)
+  // }
 
   // Delete Rider
   onRemove(rId: any) {
     this.riderService.deleteRider(rId.id)
+  }
+
+  // Export as Excel
+  exportexcel() {
+    this.exportService.exportExcel(this.riders, 'ridersData');
   }
 
 }

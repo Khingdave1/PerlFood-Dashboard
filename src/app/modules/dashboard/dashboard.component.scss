@@ -109,8 +109,7 @@
     }
     .chart {
       width: 100%;
-      #orderChart,
-      #driverChart {
+      canvas {
         width: 100% !important;
         height: auto !important;
       }

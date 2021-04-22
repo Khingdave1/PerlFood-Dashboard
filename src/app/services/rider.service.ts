@@ -40,6 +40,8 @@ export class RiderService {
 
   // Delete RIder
   deleteRider(riderId: string) {
-    this.db.doc(this.collectionName + '/' + riderId).delete()
+    return new Promise<any>((resolve, reject) => {
+      this.db.doc(this.collectionName + '/' + riderId).delete().then(res => resolve(res), err => reject(err))
+    })
   }
 }

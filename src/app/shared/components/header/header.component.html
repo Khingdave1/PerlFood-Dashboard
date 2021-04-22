@@ -118,11 +118,11 @@
         <span class="profile-dropbtn clickable" (click)="toggleProfile()">
           <span class="profile-name">
             <p>
-              Hello, <strong id="admin-name">{{ user.name }}</strong>
+              Hello, <strong id="admin-name">{{ user?.name }}</strong>
             </p>
             <p class="admin-title">Admin</p>
           </span>
-          <img [src]="user.imageUrl" alt="picture" class="profile-picture" />
+          <img [src]="user?.imageUrl" alt="picture" class="profile-picture" />
         </span>
         <ul
           class="profile-dropdown-content"

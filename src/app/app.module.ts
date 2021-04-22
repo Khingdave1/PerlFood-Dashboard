@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { DefaultModule } from './layouts/default/default.module';
 import { LoginModule } from './layouts/login/login.module';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [

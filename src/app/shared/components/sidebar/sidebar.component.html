@@ -13,57 +13,71 @@
   <!-- Sidenav List -->
   <div class="sidenav-list">
     <ul>
-      <li>
-        <a
-          routerLink="/"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <img src="../../assets/img/svg/dashboard.svg" alt="" />
+      <li
+        class="sidenav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="sidenav-links" routerLink="/">
+          <img src="../../assets/img/svg/dashboard.svg" class="sidenav-icon" />
           <p>Dashboard</p>
         </a>
       </li>
-      <li>
-        <a routerLink="/merchant" routerLinkActive="active">
-          <img src="../../assets/img/svg/merchant.svg" alt="" />
+      <li class="sidenav-item" routerLinkActive="active">
+        <a class="sidenav-links" routerLink="/merchant">
+          <img src="../../assets/img/svg/merchant.svg" class="sidenav-icon" />
           <p>Merchants</p>
         </a>
       </li>
-      <li>
-        <a routerLink="/customer" routerLinkActive="active">
-          <img src="../../assets/img/svg/customer.svg" alt="" />
+      <li class="sidenav-item" routerLinkActive="active">
+        <a class="sidenav-links" routerLink="/customer">
+          <img src="../../assets/img/svg/customer.svg" class="sidenav-icon" />
           <p>Customers</p>
         </a>
       </li>
-      <li>
-        <a routerLink="/vehicle" routerLinkActive="active">
-          <img src="../../assets/img/svg/vehicle.svg" alt="" />
+      <!-- <li class="sidenav-item" routerLinkActive="active">
+        <a class="sidenav-links" routerLink="/vehicle">
+          <img src="../../assets/img/svg/vehicle.svg" class="sidenav-icon" />
           <p>Vehicles</p>
         </a>
-      </li>
-      <li>
-        <a routerLink="/rider" routerLinkActive="active">
-          <img src="../../assets/img/svg/rider.svg" alt="" />
+      </li> -->
+      <li class="sidenav-item" routerLinkActive="active">
+        <a class="sidenav-links" routerLink="/rider">
+          <img src="../../assets/img/svg/rider.svg" class="sidenav-icon" />
           <p>Riders</p>
         </a>
       </li>
-      <li>
-        <a routerLink="/order" routerLinkActive="active">
-          <img src="../../assets/img/svg/order.svg" alt="" />
+      <li class="order-link sidenav-item" routerLinkActive="active">
+        <a class="sidenav-links" routerLink="/order">
+          <img src="../../assets/img/svg/order.svg" class="sidenav-icon" />
           <p>Orders</p>
+          <!-- Chevron down -->
+          <img
+            src="../../../../assets/img/svg/chevron-down.svg"
+            class="chevron-down"
+          />
           <!-- Notification Dot -->
           <!-- <span class="notifi-dot"></span> -->
         </a>
+        <!-- Drop down -->
+        <span class="drop-down">
+          <ul>
+            <li><a routerLink="/orderafrican">African</a></li>
+            <li><a routerLink="/ordercontinental">Continental</a></li>
+            <li><a routerLink="/orderdrink">Drinks</a></li>
+            <li><a routerLink="/orderpastry">Pastries</a></li>
+          </ul>
+        </span>
       </li>
-      <li>
-        <a routerLink="/payment" routerLinkActive="active">
-          <img src="../../assets/img/svg/payment.svg" alt="" />
+      <li class="sidenav-item" routerLinkActive="active">
+        <a class="sidenav-links" routerLink="/payment">
+          <img src="../../assets/img/svg/payment.svg" class="sidenav-icon" />
           <p>Payments</p>
         </a>
       </li>
-      <li>
-        <a routerLink="/product" routerLinkActive="active">
-          <img src="../../assets/img/svg/box.svg" alt="" />
+      <li class="sidenav-item" routerLinkActive="active">
+        <a class="sidenav-links" routerLink="/product">
+          <img src="../../assets/img/svg/box.svg" class="sidenav-icon" />
           <p>Products</p>
         </a>
       </li>
@@ -73,7 +87,7 @@
   <!-- Sidenav Settings -->
   <div class="sidenav-settings">
     <a routerLink="/setting" routerLinkActive="active">
-      <img src="../../assets/img/svg/settings.svg" alt="" />
+      <img src="../../assets/img/svg/settings.svg" class="sidenav-icon" />
       <p>Settings</p>
     </a>
   </div>

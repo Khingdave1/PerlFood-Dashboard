@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from 'src/app/services/vendor.service';
 import { Vendors } from 'src/app/interfaces/vendor';
+import { ExportService } from 'src/app/services/export.service';
 
 @Component({
   selector: 'app-merchant',
@@ -13,8 +14,10 @@ export class MerchantComponent implements OnInit {
   addVendorSect: boolean = false;
   editVendorSect: boolean = false;
   currentVendor: any;
+  title: any;
+  p: number = 1;
 
-  constructor(private vendorService: VendorService) { }
+  constructor(private vendorService: VendorService, private exportService: ExportService) { }
 
   ngOnInit(): void {
     // Getting all Vendors from Firebase
@@ -26,6 +29,17 @@ export class MerchantComponent implements OnInit {
         this.vendors.push(item)
       });
     })
+  }
+
+  // Search Vendors
+  search() {
+    if (this.title != "") {
+      this.vendors = this.vendors.filter((res: any) => {
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
+      });
+    } else if (this.title == "") {
+      this.ngOnInit()
+    }
   }
 
   // Show Vendor Section
@@ -56,6 +70,10 @@ export class MerchantComponent implements OnInit {
     this.vendorService.deleteVendor(pId.id)
   }
 
+  // Export as Excel
+  exportexcel() {
+    this.exportService.exportExcel(this.vendors, 'vendorsData');
+  }
 }
 
 

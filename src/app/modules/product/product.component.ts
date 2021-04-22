@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../interfaces/product';
+import { ExportService } from 'src/app/services/export.service';
 
 @Component({
   selector: 'app-product',
@@ -14,8 +15,10 @@ export class ProductComponent implements OnInit {
   addProductSect: boolean = false;
   editProductSect: boolean = false;
   currentProduct: any;
+  name: string;
+  p: number = 1;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private exportService: ExportService) { }
 
   ngOnInit(): void {
     // Getting all Products from Firebase
@@ -28,6 +31,17 @@ export class ProductComponent implements OnInit {
       })
     })
 
+  }
+
+  // Search products
+  search() {
+    if (this.name != "") {
+      this.products = this.products.filter((res: any) => {
+        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      });
+    } else if (this.name == "") {
+      this.ngOnInit()
+    }
   }
 
   // Show Rider Section
@@ -56,6 +70,11 @@ export class ProductComponent implements OnInit {
   // Delete Product from firebase
   onRemove(pId: any) {
     this.productService.deleteProduct(pId.id)
+  }
+
+  // Export as Excel
+  exportexcel() {
+    this.exportService.exportExcel(this.products, 'productsData');
   }
 
 }
