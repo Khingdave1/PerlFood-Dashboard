@@ -7,9 +7,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class RiderService {
 
   constructor(private db: AngularFirestore) { }
-  rider: any;
   collectionPath = this.db.collection('riders')
   collectionName = 'riders'
+  dispatchedRider: any;
+  unverifiedRider: any;
 
   // Get all Riders
   getRiders() {
@@ -23,12 +24,16 @@ export class RiderService {
     })
   }
 
-  // Get single Rider
-  getSingleRider(riderId: string) {
-    // this.rider = this.db.collection(this.collectionName, ref =>ref.where('id', '==', riderId).limit(1))
-    //   .snapshotChanges()
-    //   return this.rider
-    console.log(riderId)
+  // Get Dispatched Rider
+  getDispatchedRider(riderId: string) {
+    this.dispatchedRider = this.db.collection(this.collectionName, ref => ref.where('status', '==', riderId)).snapshotChanges()
+    return this.dispatchedRider
+  }
+
+  // Get Unverified Rider
+  getUnverifiedRider(riderId: string) {
+    this.unverifiedRider = this.db.collection(this.collectionName, ref => ref.where('status', '==', riderId)).snapshotChanges()
+    return this.unverifiedRider
   }
 
   // Update Rider

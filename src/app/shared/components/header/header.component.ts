@@ -23,15 +23,7 @@ export class HeaderComponent implements OnInit {
   profile: any;
   userId: any;
   users: any;
-  user: any
-
-
-  // @HostListener('document:click', ['$event'])
-  // clickoutProfile(event: any) {
-  //   if (!this.eRef.nativeElement.contains(event.target)) {
-  //     this.showProfile = false;
-  //   }
-  // }
+  user: any;
 
   constructor(private firebaseService: FirebaseService, private profileService: ProfileService, private renderer: Renderer2) {
     this.showNotifi = false;
@@ -52,6 +44,7 @@ export class HeaderComponent implements OnInit {
         this.showNotifi = false;
       }
     });
+
   }
 
   ngOnInit(): void {
@@ -63,11 +56,6 @@ export class HeaderComponent implements OnInit {
         this.user = item
       });
     })
-
-    // if (window.innerWidth < 658) {
-
-    //   console.log("Welcome")
-    // }
 
   }
 

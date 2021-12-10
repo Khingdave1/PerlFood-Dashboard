@@ -78,9 +78,9 @@
   <div class="table-area">
     <div class="table-area-heading">
       <div class="table-area-heading-left">
-        <p class="table-total">128 Orders</p>
+        <p class="table-total">{{ africanOrder?.length }} Orders</p>
         <img src="../../../../assets/img/svg/line.svg" alt="" />
-        <p>104 Deliveries made</p>
+        <p>0 Deliveries made</p>
       </div>
       <div class="table-area-heading-right">
         <span class="table-search">
@@ -110,41 +110,34 @@
           <p class="status">Status</p>
           <p class="action">Action</p>
         </li>
-        <li class="table-item">
-          <p class="id">#ES120391</p>
-          <p class="customer">Bala Peters</p>
-          <p class="receiver">Logun Jay S.</p>
-          <p class="address">34 bide Str, Ilorin</p>
-          <p class="status">Delivered</p>
-          <p class="action uppercase">
-            <a href="#" class="btn sec1-btn">View</a>
-          </p>
-        </li>
-        <li class="table-item">
-          <p class="id">#ES120391</p>
-          <p class="customer">Bala Peters</p>
-          <p class="receiver">Logun Jay S.</p>
-          <p class="address">34 bide Str, Ilorin</p>
-          <p class="status">Delivered</p>
-          <p class="action uppercase">
-            <a href="#" class="btn sec1-btn">View</a>
-          </p>
-        </li>
+        <ng-container *ngIf="africanOrder?.length > 0; else noItems">
+          <li
+            class="table-item"
+            *ngFor="
+              let item of africanOrder
+                | paginate: { itemsPerPage: 2, currentPage: p }
+            "
+          >
+            <p class="id">#ES120391</p>
+            <p class="customer">{{ item.user }}</p>
+            <p class="receiver">Logun Jay S.</p>
+            <p class="address">34 bide Str, Ilorin</p>
+            <p class="status">Delivered</p>
+            <p class="action uppercase">
+              <a routerLink="/" class="btn sec1-btn">View</a>
+            </p>
+          </li>
+        </ng-container>
       </ul>
-      <div class="pagination">
-        <a href="#"
-          ><img src="../../../../assets/img/svg/arrow-left.svg" alt=""
-        /></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">...</a>
-        <a href="#">12</a>
-        <a href="#"
-          ><img src="../../../../assets/img/svg/arrow-right.svg" alt=""
-        /></a>
-      </div>
+      <!-- Pagination -->
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="pagination"
+      ></pagination-controls>
+      <!-- If the List is empty -->
+      <ng-template #noItems>
+        <p class="empty-list">Empty list</p>
+      </ng-template>
     </div>
   </div>
 </section>

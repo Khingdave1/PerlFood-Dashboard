@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Profile } from '../interfaces/profile';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  private profilesCollection = AngularFirestoreCollection;
   profiles: any;
   vendors: any;
   profile: any;

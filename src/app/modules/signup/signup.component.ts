@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
     { value: "others", viewValue: "others" }
   ]
 
-  constructor(private firebaseService: FirebaseService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private firebaseService: FirebaseService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 

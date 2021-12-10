@@ -71,6 +71,8 @@ export class OrderComponent implements OnInit {
   currentOrder: any;
   canvas: any;
   ctx: any;
+  p: number = 1;
+  successfulOrders: any;
 
   constructor(private orderService: OrderService) { }
 
@@ -84,7 +86,18 @@ export class OrderComponent implements OnInit {
         this.orders.push(item)
       })
     })
+
+    this.orderService.getASuccessfulOrder("successful").subscribe((so: any) => {
+      this.successfulOrders = []
+      so.forEach((i: any) => {
+        let item = i.payload.doc.data() as Order
+        item.id = i.payload.doc.id
+        this.successfulOrders.push(item)
+      });
+    })
+
     this.createOrderChart('orderChart');
+
 
   }
 

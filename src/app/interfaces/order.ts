@@ -5,5 +5,6 @@ export interface Order {
   deliveryMode: string,
   orderStatus: string,
   paymentStatus: string,
-  user: string
+  user: string,
+  category: any
 }

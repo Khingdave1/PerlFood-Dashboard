@@ -53,6 +53,7 @@ export class AddproductComponent implements OnInit {
         this.categories.push(item)
       });
     })
+
   }
 
   // Show Rider Section

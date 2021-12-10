@@ -7,11 +7,11 @@
   </div>
   <div class="main-cards">
     <div class="card">
-      <h4>334</h4>
+      <h4>{{ orders?.length }}</h4>
       <p>Orders</p>
     </div>
     <div class="card">
-      <h4>302</h4>
+      <h4>{{ successfulOrders?.length }}</h4>
       <p>Successful Deliveries</p>
     </div>
     <div class="card dark-bg">
@@ -189,32 +189,28 @@
           <p class="action">Action</p>
         </li>
         <ng-container *ngIf="orders?.length > 0; else noItems">
-          <li class="table-item" *ngFor="let item of orders">
+          <li
+            class="table-item"
+            *ngFor="
+              let item of orders | paginate: { itemsPerPage: 2, currentPage: p }
+            "
+          >
             <p class="id">#ES120391</p>
             <p class="customer">{{ item.user }}</p>
             <p class="receiver">Logun Jay S.</p>
             <p class="address">34 bide Str, Ilorin</p>
-            <p class="status">Delivered</p>
+            <p class="status">{{ item.orderStatus }}</p>
             <p class="action uppercase">
               <a routerLink="/" class="btn sec1-btn">View</a>
             </p>
           </li>
         </ng-container>
       </ul>
-      <div class="pagination">
-        <a href="#"
-          ><img src="../../../../assets/img/svg/arrow-left.svg" alt=""
-        /></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">...</a>
-        <a href="#">12</a>
-        <a href="#"
-          ><img src="../../../../assets/img/svg/arrow-right.svg" alt=""
-        /></a>
-      </div>
+      <!-- Pagination -->
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="pagination"
+      ></pagination-controls>
       <!-- If the Product List is empty -->
       <ng-template #noItems>
         <p class="empty-list">Empty list</p>

@@ -17,12 +17,11 @@
           <label for="image">Image</label>
           <input
             type="file"
-            name="vendors"
+            name="image"
             placeholder="Upload"
             (change)="onFileSelected($event)"
             #merchantImage
             style="display: none"
-            required
           />
           <span (click)="merchantImage.click()" class="col-2 select-field">
             Upload
@@ -33,11 +32,12 @@
           <label for="name">Name</label>
           <input
             type="text"
-            placeholder="Product name"
+            placeholder="Merchant name"
             class="col-2"
             #title
             formControlName="title"
           />
+          <!-- <small *ngIf="title.touched" style="color: red">Error</small> -->
         </div>
         <div class="form-area-field address">
           <label for="address">Address</label>
@@ -45,7 +45,6 @@
             type="text"
             placeholder="Address"
             class="col-2"
-            #address
             formControlName="address"
           />
         </div>
@@ -55,7 +54,6 @@
             type="email"
             placeholder="Email"
             class="col-2"
-            #email
             formControlName="email"
           />
         </div>
@@ -65,7 +63,6 @@
             type="text"
             placeholder="Opening time"
             class="col-2"
-            #opensAt
             formControlName="opensAt"
           />
         </div>
@@ -75,7 +72,6 @@
             type="text"
             placeholder="Closing time"
             class="col-2"
-            #closesAt
             formControlName="closesAt"
           />
         </div>
@@ -85,7 +81,6 @@
             type="tel"
             placeholder="08036577028"
             class="col-2"
-            #phoneNumber
             formControlName="phoneNumber"
           />
         </div>
@@ -95,16 +90,11 @@
             cols="30"
             rows="6"
             class="select-field col-2"
-            #description
             formControlName="description"
           ></textarea>
         </div>
         <div class="form-area-field form-btn">
-          <button
-            [disabled]="loading"
-            class="btn prim-btn"
-            (click)="onUpload()"
-          >
+          <button class="btn prim-btn" (click)="onUpload()">
             <span *ngIf="loading">Uploading!</span>
             <span *ngIf="!loading">Upload</span>
           </button>
@@ -115,6 +105,8 @@
         </div>
       </form>
     </div>
+
+    <!-- Image Preview -->
     <div class="preview-area">
       <p *ngIf="showPreviewText">Image Preview</p>
       <img [src]="previewImage" alt="" *ngIf="showPreviewImage" />

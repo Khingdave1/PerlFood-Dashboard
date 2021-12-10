@@ -18,7 +18,7 @@ export class AddmerchantComponent implements OnInit {
   previewImage: any;
   showPreviewImage: boolean = false;
   showPreviewText: boolean = true;
-  loading: boolean;
+  loading: boolean = false;
   successMessage: boolean = false;
   status = "";
   storeLocations = [];
@@ -26,6 +26,7 @@ export class AddmerchantComponent implements OnInit {
   isPopular = false;
   isVerified = false;
   images = [];
+  name: any;
 
   constructor(private vendorService: VendorService, private formBuilder: FormBuilder, private http: HttpClient) { }
 
@@ -37,17 +38,6 @@ export class AddmerchantComponent implements OnInit {
     this.parentData.emit();
   }
 
-  // Vendor Form
-  vendorForm: FormGroup = this.formBuilder.group({
-    title: ['', { validators: [Validators.required], updateOn: "change" }],
-    imageUrl: ['', { validators: [Validators.required], updateOn: "change" }],
-    address: ['', { validators: [Validators.required], updateOn: "change" }],
-    email: ['', { validators: [Validators.required, Validators.email], updateOn: "change" }],
-    opensAt: ['', { validators: [Validators.required], updateOn: "change" }],
-    closesAt: ['', { validators: [Validators.required], updateOn: "change" }],
-    description: ['', { validators: [Validators.required], updateOn: "change" }],
-    phoneNumber: ['', { validators: [Validators.required, Validators.minLength(11)], updateOn: "change" }]
-  });
 
   // File Selected
   onFileSelected(event: any) {
@@ -68,6 +58,18 @@ export class AddmerchantComponent implements OnInit {
       }
     }
   }
+
+  // Vendor Form
+  vendorForm: FormGroup = this.formBuilder.group({
+    title: ['', { validators: [Validators.required], updateOn: "change" }],
+    imageUrl: ['', { validators: [Validators.required], updateOn: "change" }],
+    address: ['', { validators: [Validators.required], updateOn: "change" }],
+    email: ['', { validators: [Validators.required, Validators.email], updateOn: "change" }],
+    opensAt: ['', { validators: [Validators.required], updateOn: "change" }],
+    closesAt: ['', { validators: [Validators.required], updateOn: "change" }],
+    description: ['', { validators: [Validators.required], updateOn: "change" }],
+    phoneNumber: ['', { validators: [Validators.required, Validators.minLength(11)], updateOn: "change" }]
+  });
 
   // Upload Image to Cloudinary Then Submit form to Firebase
   onUpload() {
@@ -99,9 +101,11 @@ export class AddmerchantComponent implements OnInit {
       this.vendorService.addVendor(data).then(res => {
         this.loading = false
         this.successMessage = true
-        console.log(res)
+        // Reset Form
+        this.vendorForm.reset()
+        // console.log(this.vendorForm.valid)
         // Return to the Products page
-        window.location.reload()
+        // window.location.reload()
       }).catch(err => {
         console.log(err)
       })

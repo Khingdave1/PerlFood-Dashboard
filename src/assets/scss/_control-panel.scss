@@ -176,6 +176,7 @@ main {
       margin-bottom: 2rem;
       &-left {
         display: flex;
+        align-items: center;
         p:first-child {
           color: $dark-color1;
         }
@@ -316,7 +317,7 @@ main {
     position: relative;
     display: flex;
     align-items: center;
-    width: 120px;
+    // width: 120px;
     border-radius: $border-radius - 4;
     border: 1px solid $grey-color1;
     padding: 0.25rem;
@@ -327,12 +328,13 @@ main {
       font-size: $button-md-font;
       color: $grey-color2;
       width: 100%;
+      display: flex;
+      align-items: center;
       img {
         width: 15px;
         height: 15px;
         margin-left: 2px;
         @include transition(0.2s);
-        float: right;
       }
     }
     .dropdown-content {
@@ -407,6 +409,13 @@ main {
             @include border-hover;
             &::placeholder {
               color: $grey-color2;
+            }
+            // Input validation
+            &.ng-touched.ng-invalid {
+              border: 1px solid $danger-color;
+            }
+            &.ng-touched.ng-valid {
+              border: 1px solid $success-color;
             }
           }
           textarea {

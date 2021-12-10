@@ -19,7 +19,6 @@ export class EditmerchantComponent implements OnInit {
   showPreviewText: boolean = true;
   loading = false;
   successMessage: boolean = false;
-  // images = [];
 
   constructor(private vendorService: VendorService, private formBuilder: FormBuilder, private http: HttpClient) { }
 
